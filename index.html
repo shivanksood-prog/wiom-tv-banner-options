@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<!-- DESIGN COMPARISON v3 — graphics changed: NO television sets. The experience is "TV" (copy keeps the word),
+     but it plays on the phone → visuals are phone frames + play buttons.
+     Judged on: (1) "TV experience" lands  (2) "FREE" lands (seen + believed). -->
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<title>Wiom TV Banner — Options v3 (phone graphics)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+    body { margin: 0; background: #F1EDF7; font-family: 'Noto Sans Devanagari', 'Noto Sans', sans-serif; color: #161021; }
+    .wrap { max-width: 420px; margin: 0 auto; padding: 24px 16px 64px 16px; }
+    h1 { font-family: 'Noto Sans'; font-size: 20px; margin: 0 0 4px 0; }
+    .note { font-size: 13px; color: #5C5570; margin-bottom: 8px; }
+    .crit { font-size: 12.5px; color: #5C5570; background: #fff; border-radius: 12px; padding: 10px 14px; margin-bottom: 24px; line-height: 18px; }
+    .variant-label { font-family: 'Noto Sans'; font-weight: 700; font-size: 14px; color: #D9008D; margin: 40px 0 4px 0; }
+    .variant-desc { font-size: 12.5px; color: #5C5570; margin: 0 0 12px 0; line-height: 18px; }
+    .variant-desc b { color: #161021; }
+
+    .ctx { background: #fff; border-radius: 20px; padding: 20px 0 8px 0; box-shadow: 0 2px 6px rgba(0,0,0,0.08); }
+    .ctx-head { text-align: center; color: #161021; font-size: 16px; font-weight: 700; padding: 0 16px 12px 16px; }
+    .ctx-head .tickrow { color: #1EBE5C; font-size: 28px; }
+
+    /* ====== shared: landscape phone frame (watching video) ====== */
+    .ph-land { background: #0B0714; border: 3px solid #443152; border-radius: 18px; padding: 7px 16px 7px 7px; position: relative; }
+    .ph-land::after { content: ''; position: absolute; right: 6px; top: 50%; transform: translateY(-50%); width: 5px; height: 5px; border-radius: 50%; background: #665E75; } /* selfie camera */
+    .ph-land .screen { border-radius: 12px; position: relative; overflow: hidden; }
+
+    /* ====== shared: portrait mini phone (channel grid) ====== */
+    .ph-port { background: #0B0714; border: 3px solid #443152; border-radius: 18px; padding: 14px 6px 12px 6px; position: relative; width: 96px; aspect-ratio: 9 / 19; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; }
+    .ph-port::before { content: ''; position: absolute; top: 6px; left: 50%; transform: translateX(-50%); width: 5px; height: 5px; border-radius: 50%; background: #665E75; } /* punch-hole */
+    .ph-port::after { content: ''; position: absolute; bottom: 5px; left: 50%; transform: translateX(-50%); width: 28px; height: 3px; border-radius: 9999px; background: #665E75; } /* home bar */
+    .ph-port .tiles { gap: 4px; }
+    .ph-port .tile { font-size: 9px; border-radius: 6px; aspect-ratio: 1 / 1; }
+    .ph-port .tile .em { font-size: 14px; }
+
+    .tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+    .tiles.two { grid-template-columns: 1fr 1fr; }
+    .tile { border-radius: 8px; aspect-ratio: 1 / 0.8; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; color: #fff; font-size: 11px; font-weight: 600; }
+    .tile .em { font-size: 20px; line-height: 1; }
+    .t1 { background: #6D17CE; } .t2 { background: #D9008D; } .t3 { background: #FF8000; } .t4 { background: #008043; }
+
+    .vidscreen { background: #6D17CE; aspect-ratio: 19/9; display: flex; align-items: center; justify-content: center; position: relative; }
+    .playbtn { width: 42px; height: 42px; border-radius: 50%; background: rgba(255,255,255,0.92); display: flex; align-items: center; justify-content: center; }
+    .playbtn .material-icons { color: #6D17CE; font-size: 28px; margin-left: 2px; }
+    .vidbar { position: absolute; left: 0; right: 0; bottom: 0; background: rgba(11,7,20,0.75); color: #fff; font-size: 11px; font-weight: 600; padding: 4px 10px; display: flex; align-items: center; justify-content: space-between; }
+
+    /* ====== shared badges / CTA ====== */
+    .live { display: inline-flex; align-items: center; gap: 6px; background: #E01E00; color: #fff; font-family: 'Noto Sans'; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; padding: 3px 10px; border-radius: 9999px; }
+    .live .dot { width: 6px; height: 6px; border-radius: 50%; background: #fff; animation: blink 1.2s infinite; }
+    @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.25; } }
+    .goldfree { background: linear-gradient(120deg, #D5AF4A, #F2E983, #D5B14B); color: #372902; font-size: 12px; font-weight: 700; padding: 3px 12px; border-radius: 9999px; }
+    .gift { display: inline-flex; align-items: center; gap: 6px; background: #FFE5F6; color: #D9008D; font-size: 12.5px; font-weight: 700; padding: 4px 12px; border-radius: 9999px; }
+    .cta { margin-top: 14px; background: #D9008D; color: #fff; font-size: 16px; font-weight: 700; line-height: 24px; text-align: center; padding: 12px 16px; border-radius: 14px; }
+    .toprow { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+
+    /* ============ A″ — dark cinematic, phone playing ============ */
+    .bA { display: block; width: 90%; margin: 8px auto 16px auto; box-sizing: border-box; background: #161021; border-radius: 20px; padding: 16px; text-decoration: none; }
+    .bA:active { background: #251c35; }
+    .bA .ph-land { border-color: #665E75; }
+    .bA-title { color: #FAF9FC; font-size: 20px; font-weight: 700; line-height: 28px; margin-top: 12px; }
+    .bA-sub { color: #A7A1B2; font-size: 13.5px; line-height: 20px; margin-top: 4px; }
+
+    /* ============ B″ — explanatory, mini phone grid ============ */
+    .bB { display: block; width: 90%; margin: 8px auto 16px auto; box-sizing: border-box; background: #fff; border: 1px solid #FFB2E4; border-radius: 20px; padding: 16px; text-decoration: none; }
+    .bB:active { background: #FFE5F6; }
+    .bB-head { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
+    .bB-head .ph-port { flex: 0 0 96px; }
+    .bB-new { display: inline-block; background: #D9008D; color: #fff; font-size: 11px; font-weight: 700; padding: 2px 10px; border-radius: 9999px; margin-bottom: 6px; }
+    .bB-title { color: #161021; font-size: 18px; font-weight: 700; line-height: 25px; }
+    .bB-rows { display: flex; flex-direction: column; gap: 8px; }
+    .bB-row { display: flex; align-items: center; gap: 10px; color: #161021; font-size: 14px; line-height: 20px; }
+    .bB-row .material-icons { color: #008043; font-size: 20px; }
+    .bB-rowfree { background: #E1FAED; border-radius: 10px; padding: 8px 10px; color: #008043; font-weight: 700; }
+
+    /* ============ C″ — reward framing, play icon ============ */
+    .bC { display: block; width: 90%; margin: 8px auto 16px auto; box-sizing: border-box; background: #FFE5F6; border-radius: 20px; padding: 16px; text-decoration: none; position: relative; }
+    .bC:active { background: #FFCCED; }
+    .bC .gift { background: #fff; }
+    .bC-play { position: absolute; right: 14px; top: 14px; color: #D9008D; font-size: 46px; }
+    .bC-title { color: #161021; font-size: 20px; font-weight: 700; line-height: 28px; margin-top: 10px; padding-right: 54px; }
+    .bC-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+    .bC-chip { background: #fff; color: #161021; font-size: 12.5px; font-weight: 600; padding: 4px 12px; border-radius: 9999px; }
+    .bC-chip.more { background: transparent; color: #D9008D; font-weight: 700; }
+
+    /* ============ D″ — hybrid, phone with channel grid ============ */
+    .bD { display: block; width: 90%; margin: 8px auto 16px auto; box-sizing: border-box; background: #fff; border: 1px solid #FFB2E4; border-radius: 20px; padding: 16px; text-decoration: none; }
+    .bD:active { background: #FFE5F6; }
+    .bD-title { color: #161021; font-size: 20px; font-weight: 700; line-height: 28px; margin-top: 12px; }
+    .bD-sub { color: #5C5570; font-size: 13.5px; line-height: 20px; margin-top: 2px; }
+    .bD .screen { background: #0B0714; aspect-ratio: 19 / 9; box-sizing: border-box; padding: 8px 10px; display: flex; flex-direction: column; gap: 6px; }
+    .bD-apphead { display: flex; align-items: center; justify-content: space-between; font-family: 'Noto Sans'; font-size: 9px; font-weight: 700; color: #FFB2E4; letter-spacing: 0.04em; }
+    .bD-apphead .live-mini { color: #fff; background: #E01E00; border-radius: 9999px; padding: 1px 7px; font-size: 8px; }
+    .bD .tiles { gap: 5px; flex: 1; }
+    .bD .tile { aspect-ratio: auto; font-size: 9px; border-radius: 6px; }
+    .bD .tile .em { font-size: 13px; }
+    .tile.tmore { background: #352D42; }
+
+    /* ============ E″ — "Now Playing" on phone ============ */
+    .bE { display: block; width: 90%; margin: 8px auto 16px auto; box-sizing: border-box; background: #fff; border: 1px solid #FFB2E4; border-radius: 20px; padding: 16px; text-decoration: none; }
+    .bE:active { background: #FFE5F6; }
+    .bE-title { color: #161021; font-size: 20px; font-weight: 700; line-height: 28px; margin-top: 12px; }
+    .bE-sub { color: #5C5570; font-size: 13.5px; line-height: 20px; margin-top: 2px; }
+
+    /* ============ F — channel ticker (kept, play CTA) ============ */
+    .bF { display: block; width: 90%; margin: 8px auto 16px auto; box-sizing: border-box; background: #161021; border-radius: 20px; padding: 16px 0; text-decoration: none; overflow: hidden; }
+    .bF:active { background: #251c35; }
+    .bF-inner { padding: 0 16px; }
+    .bF-title { color: #FAF9FC; font-size: 20px; font-weight: 700; line-height: 28px; }
+    .bF-sub { color: #A7A1B2; font-size: 13.5px; line-height: 20px; margin-top: 2px; }
+    .ticker { overflow: hidden; margin: 12px 0 2px 0; }
+    .ticker-track { display: flex; gap: 8px; width: max-content; animation: scrollx 14s linear infinite; }
+    @keyframes scrollx { to { transform: translateX(-50%); } }
+    .tk { flex: 0 0 auto; border-radius: 10px; color: #fff; font-size: 12.5px; font-weight: 600; padding: 8px 14px; display: flex; align-items: center; gap: 6px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+    <h1>Wiom TV Banner — Options v3</h1>
+    <div class="note">Graphics rule changed: <b>no television sets</b> — the experience is TV but it plays on the phone, so visuals are phones + play buttons. Copy keeps the word "TV".</div>
+    <div class="crit"><b>Judged on:</b> ① क्या ग्राहक समझेगा कि फोन पर TV जैसा अनुभव मिलेगा? ② क्या उसे दिखेगा <i>और</i> भरोसा होगा कि यह फ्री है?</div>
+
+    <!-- ============ A" ============ -->
+    <div class="variant-label">A″ — Dark cinematic: phone playing LIVE</div>
+    <p class="variant-desc"><b>Graphic:</b> landscape phone (selfie camera dot) playing a LIVE news channel. Headline says the proposition outright: फोन ही बना TV. ① video-on-phone is unmistakable &nbsp;② फ्री ×3 (gold badge, sub, CTA).</p>
+    <div class="ctx">
+        <div class="ctx-head"><div class="tickrow">✔</div>भुगतान सफल हुआ!</div>
+        <a class="bA" href="https://satyam.wiom.in/tv" target="_blank" rel="noopener">
+            <div class="toprow">
+                <span class="live"><span class="dot"></span>LIVE TV</span>
+                <span class="goldfree">100% फ्री</span>
+            </div>
+            <div class="ph-land">
+                <div class="screen">
+                    <div class="vidscreen">
+                        <div class="playbtn"><span class="material-icons">play_arrow</span></div>
+                        <div class="vidbar"><span>📰 न्यूज़ चैनल</span><span>LIVE</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="bA-title">आपका फोन, अब आपका TV</div>
+            <div class="bA-sub">75+ TV चैनल इसी फोन पर — कोई ऐप नहीं, कोई चार्ज नहीं</div>
+            <div class="cta">अभी फ्री में देखें →</div>
+        </a>
+    </div>
+
+    <!-- ============ B" ============ -->
+    <div class="variant-label">B″ — Explanatory: phone with channel grid</div>
+    <p class="variant-desc"><b>Graphic:</b> portrait phone (punch-hole) showing the channel grid — exactly what they'll see after tapping. ① literal product preview &nbsp;② फ्री owns the card via green row.</p>
+    <div class="ctx">
+        <div class="ctx-head"><div class="tickrow">✔</div>भुगतान सफल हुआ!</div>
+        <a class="bB" href="https://satyam.wiom.in/tv" target="_blank" rel="noopener">
+            <div class="bB-head">
+                <div class="ph-port">
+                    <div class="tiles two">
+                        <div class="tile t1"><span class="em">📰</span>न्यूज़</div>
+                        <div class="tile t2"><span class="em">🎬</span>मूवीज़</div>
+                        <div class="tile t3"><span class="em">🙏</span>भक्ति</div>
+                        <div class="tile t4"><span class="em">🧒</span>कार्टून</div>
+                        <div class="tile t2"><span class="em">🎵</span>म्यूज़िक</div>
+                        <div class="tile t1"><span class="em">🏏</span>स्पोर्ट्स</div>
+                    </div>
+                </div>
+                <div>
+                    <span class="bB-new">नया</span>
+                    <div class="bB-title">75+ TV चैनल — अब फोन पर</div>
+                </div>
+            </div>
+            <div class="bB-rows">
+                <div class="bB-row bB-rowfree"><span class="material-icons">check_circle</span>बिल्कुल फ्री — कोई चार्ज नहीं</div>
+                <div class="bB-row"><span class="material-icons">check_circle</span>न्यूज़, मूवीज़, भक्ति, कार्टून — सब LIVE</div>
+                <div class="bB-row"><span class="material-icons">check_circle</span>इसी फोन पर चलाएं, बिना ऐप</div>
+            </div>
+            <div class="cta">फ्री में देखना शुरू करें</div>
+        </a>
+    </div>
+
+    <!-- ============ C" ============ -->
+    <div class="variant-label">C″ — Reward framing: play icon</div>
+    <p class="variant-desc"><b>Graphic:</b> TV icon → solid pink play button (the universal "video will play" symbol). ① play + चैनल carries it &nbsp;② best believability: फ्री tied to the recharge.</p>
+    <div class="ctx">
+        <div class="ctx-head"><div class="tickrow">✔</div>भुगतान सफल हुआ!</div>
+        <a class="bC" href="https://satyam.wiom.in/tv" target="_blank" rel="noopener">
+            <span class="material-icons bC-play">play_circle</span>
+            <span class="gift">🎁 आपके रिचार्ज के साथ फ्री</span>
+            <div class="bC-title">75+ TV चैनल अब फोन पर!</div>
+            <div class="bC-chips">
+                <span class="bC-chip">📰 न्यूज़</span>
+                <span class="bC-chip">🎬 मूवीज़</span>
+                <span class="bC-chip">🙏 भक्ति</span>
+                <span class="bC-chip">🧒 कार्टून</span>
+                <span class="bC-chip more">+ और भी</span>
+            </div>
+            <div class="cta">अभी फ्री में देखें →</div>
+        </a>
+    </div>
+
+    <!-- ============ D" ============ -->
+    <div class="variant-label">D″ — Hybrid: phone grid + gold फ्री + gift line</div>
+    <p class="variant-desc"><b>Graphic:</b> landscape phone (19:9) showing the Wiom TV app UI — header + channel grid + "75+ चैनल" tile. Gold badge = फ्री <i>seen</i>; gift line = फ्री <i>believed</i>; चैनल headline = TV <i>named</i>.</p>
+    <div class="ctx">
+        <div class="ctx-head"><div class="tickrow">✔</div>भुगतान सफल हुआ!</div>
+        <a class="bD" href="https://satyam.wiom.in/tv" target="_blank" rel="noopener">
+            <div class="toprow">
+                <span class="gift">🎁 आपके रिचार्ज के साथ</span>
+                <span class="goldfree">100% फ्री</span>
+            </div>
+            <div class="ph-land">
+                <div class="screen">
+                    <div class="bD-apphead"><span>WIOM TV</span><span class="live-mini">LIVE</span></div>
+                    <div class="tiles">
+                        <div class="tile t1"><span class="em">📰</span>न्यूज़</div>
+                        <div class="tile t2"><span class="em">🎬</span>मूवीज़</div>
+                        <div class="tile t3"><span class="em">🙏</span>भक्ति</div>
+                        <div class="tile t4"><span class="em">🧒</span>कार्टून</div>
+                        <div class="tile t4"><span class="em">🎵</span>म्यूज़िक</div>
+                        <div class="tile t3"><span class="em">🏏</span>स्पोर्ट्स</div>
+                        <div class="tile t2"><span class="em">😂</span>कॉमेडी</div>
+                        <div class="tile tmore">75+ चैनल</div>
+                    </div>
+                </div>
+            </div>
+            <div class="bD-title">75+ TV चैनल, अब आपके फोन पर</div>
+            <div class="bD-sub">इसी फोन पर देखें — कोई ऐप नहीं, कोई चार्ज नहीं</div>
+            <div class="cta">अभी फ्री में देखें →</div>
+        </a>
+    </div>
+
+    <!-- ============ E" ============ -->
+    <div class="variant-label">E″ — "Now Playing" on the phone</div>
+    <p class="variant-desc"><b>Graphic:</b> phone mid-playback (▶ + LIVE bar) — video-thumbnail instinct: people tap play buttons. CTA is an action ("चलाएं"), not an offer. ① strongest tap-trigger &nbsp;② gift line + फ्री in sub.</p>
+    <div class="ctx">
+        <div class="ctx-head"><div class="tickrow">✔</div>भुगतान सफल हुआ!</div>
+        <a class="bE" href="https://satyam.wiom.in/tv" target="_blank" rel="noopener">
+            <div class="ph-land">
+                <div class="screen">
+                    <div class="vidscreen">
+                        <div class="playbtn"><span class="material-icons">play_arrow</span></div>
+                        <div class="vidbar"><span>📰 न्यूज़ चैनल</span><span class="live" style="padding:2px 8px;"><span class="dot"></span>LIVE</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="bE-title">TV चालू करें — 75+ चैनल</div>
+            <div class="bE-sub">🎁 आपके रिचार्ज के साथ बिल्कुल फ्री, इसी फोन पर</div>
+            <div class="cta">▶ अभी चलाएं</div>
+        </a>
+    </div>
+
+    <!-- ============ F ============ -->
+    <div class="variant-label">F — Channel ticker (unchanged graphic — never had a TV)</div>
+    <p class="variant-desc"><b>Graphic:</b> scrolling channel parade = abundance + the page's only motion. Headline updated to फोन framing; CTA gets ▶. ① चैनल parade &nbsp;② gold badge + CTA.</p>
+    <div class="ctx">
+        <div class="ctx-head"><div class="tickrow">✔</div>भुगतान सफल हुआ!</div>
+        <a class="bF" href="https://satyam.wiom.in/tv" target="_blank" rel="noopener">
+            <div class="bF-inner">
+                <div class="toprow">
+                    <span class="live"><span class="dot"></span>LIVE TV</span>
+                    <span class="goldfree">100% फ्री</span>
+                </div>
+                <div class="bF-title">75+ TV चैनल, अब फोन पर</div>
+                <div class="bF-sub">इसी फोन पर देखें — कोई ऐप नहीं</div>
+            </div>
+            <div class="ticker">
+                <div class="ticker-track">
+                    <span class="tk t1">📰 न्यूज़</span><span class="tk t2">🎬 मूवीज़</span><span class="tk t3">🙏 भक्ति</span><span class="tk t4">🧒 कार्टून</span><span class="tk t2">🎵 म्यूज़िक</span><span class="tk t1">🏏 स्पोर्ट्स</span><span class="tk t4">😂 कॉमेडी</span><span class="tk t3">🍳 लाइफस्टाइल</span>
+                    <span class="tk t1">📰 न्यूज़</span><span class="tk t2">🎬 मूवीज़</span><span class="tk t3">🙏 भक्ति</span><span class="tk t4">🧒 कार्टून</span><span class="tk t2">🎵 म्यूज़िक</span><span class="tk t1">🏏 स्पोर्ट्स</span><span class="tk t4">😂 कॉमेडी</span><span class="tk t3">🍳 लाइफस्टाइल</span>
+                </div>
+            </div>
+            <div class="bF-inner"><div class="cta">▶ अभी फ्री में देखें</div></div>
+        </a>
+    </div>
+</div>
+</body>
+</html>
