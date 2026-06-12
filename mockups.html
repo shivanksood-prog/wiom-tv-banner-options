@@ -80,6 +80,25 @@
     .bC-chip { background: #fff; color: #161021; font-size: 11.5px; font-weight: 600; padding: 3px 10px; border-radius: 9999px; }
     .bC-chip.more { background: transparent; color: #D9008D; font-weight: 700; }
 
+    /* C-compact */
+    .bCc { display: block; width: 90%; margin: 14px auto 4px auto; box-sizing: border-box; background: #FFE5F6; border-radius: 16px; padding: 12px 14px; text-decoration: none; }
+    .bCc-row1 { display: flex; align-items: center; justify-content: space-between; }
+    .bCc-title { color: #161021; font-size: 16px; font-weight: 700; line-height: 22px; margin-top: 6px; }
+    .bCc-row3 { display: flex; align-items: center; justify-content: space-between; margin-top: 7px; }
+    .bCc-chips { display: flex; gap: 4px; }
+    .bCc-chip { background: #fff; border-radius: 9999px; padding: 2px 9px; font-size: 11px; font-weight: 600; }
+    .bCc-go { color: #D9008D; font-weight: 700; font-size: 13px; white-space: nowrap; }
+
+    /* F-compact */
+    .bFc { display: block; width: 90%; margin: 14px auto 4px auto; box-sizing: border-box; background: #161021; border-radius: 16px; padding: 12px 0; text-decoration: none; overflow: hidden; }
+    .bFc-row1 { display: flex; align-items: center; justify-content: space-between; padding: 0 14px; }
+    .bFc-title { color: #FAF9FC; font-size: 16px; font-weight: 700; line-height: 22px; }
+    .bFc-row3 { display: flex; align-items: center; justify-content: space-between; padding: 0 14px; margin-top: 8px; }
+    .bFc-sub { color: #A7A1B2; font-size: 11.5px; }
+    .bFc-go { color: #FFB2E4; font-weight: 700; font-size: 13px; white-space: nowrap; }
+    .ticker.sm { margin: 8px 0 0 0; }
+    .ticker.sm .tk { padding: 5px 10px; font-size: 10.5px; border-radius: 8px; }
+
     /* F — ticker */
     .bF { display: block; width: 90%; margin: 14px auto 4px auto; box-sizing: border-box; background: #161021; border-radius: 18px; padding: 14px 0; text-decoration: none; overflow: hidden; }
     .bF-inner { padding: 0 14px; }
@@ -162,6 +181,38 @@
         <div class="hotspots">1,50,000+ लोकेशन पर उपलब्ध</div>
     </div></div>
 
+    <!-- ================= #1-compact C ================= -->
+    <div class="variant-label">#1·compact — C-compact (~110px, ≈18% of first screen)</div>
+    <p class="variant-desc">Same three message atoms (TV · फ्री · इसी फोन पर) in half the height — CTA becomes an inline link since the whole card taps. Skyline returns above the fold.</p>
+    <div class="device"><div class="scr">
+        <div class="fold"><span>यहाँ तक बिना स्क्रॉल दिखेगा</span></div>
+        <div class="statusbar"><span>11:38</span><span>LTE ▾▴ ▂▄▆ ▮</span></div>
+        <div class="chromebar"><div class="chromepill">🔒 i2e1.in/WiomNet/Payment…</div></div>
+        <div class="pg-head">
+            <div class="brand"><div class="brand-mark">∞</div><span class="brand-name">Wiom</span></div>
+            <div class="pg-help"><span class="h">मदद</span><span class="material-icons">translate</span></div>
+        </div>
+        <div class="tick"><span class="material-icons">check</span></div>
+        <div class="titles"><h2>भुगतान सफल हुआ!</h2><h2>अनलिमिटेड इंटरनेट का आनंद लें</h2></div>
+        <a class="bCc" href="https://satyam.wiom.in/tv">
+            <div class="bCc-row1"><span class="gift" style="background:#fff;">🎁 आपके रिचार्ज के साथ फ्री</span><span class="material-icons" style="color:#D9008D;font-size:26px;">play_circle</span></div>
+            <div class="bCc-title">75+ TV चैनल — इसी फोन पर</div>
+            <div class="bCc-row3">
+                <div class="bCc-chips"><span class="bCc-chip">📰 न्यूज़</span><span class="bCc-chip">🎬 मूवीज़</span><span class="bCc-chip">🙏 भक्ति</span><span class="bCc-chip">+ और</span></div>
+                <span class="bCc-go">अभी देखें →</span>
+            </div>
+        </a>
+        <div class="skyline">
+            <svg viewBox="0 0 400 130" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M0 80 L0 62 L18 62 L18 48 L30 48 L30 66 L48 66 L48 52 L60 52 L60 70 L80 70 L86 42 L92 70 L112 70 L112 56 L126 56 L126 38 L134 38 L134 70 L160 70 L166 24 L172 70 L196 70 L196 50 L210 40 L224 50 L224 70 L250 70 L256 35 L262 70 L284 70 L284 54 L300 44 L316 54 L316 70 L340 70 L346 47 L352 70 L372 70 L372 58 L386 58 L386 80 L400 80 L400 86 Q200 132 0 86 Z" fill="#161021"/>
+                <circle cx="120" cy="18" r="9" fill="#D9008D"/><path d="M120 34 L113 22 L127 22 Z" fill="#D9008D"/>
+                <circle cx="290" cy="26" r="7" fill="#D9008D"/><path d="M290 38 L285 28 L295 28 Z" fill="#D9008D"/>
+                <circle cx="40" cy="34" r="5" fill="#D9008D"/><circle cx="370" cy="40" r="5" fill="#D9008D"/>
+            </svg>
+        </div>
+        <div class="hotspots">1,50,000+ लोकेशन पर उपलब्ध</div>
+    </div></div>
+
     <!-- ================= #2 F ================= -->
     <div class="variant-label">#2 · F — Channel ticker</div>
     <p class="variant-desc">Similar height to C; the moving ticker is the page's only motion — eye lands on it after the tick.</p>
@@ -186,6 +237,38 @@
                 <span class="tk t1">📰 न्यूज़</span><span class="tk t2">🎬 मूवीज़</span><span class="tk t3">🙏 भक्ति</span><span class="tk t4">🧒 कार्टून</span><span class="tk t2">🎵 म्यूज़िक</span><span class="tk t1">🏏 स्पोर्ट्स</span><span class="tk t4">😂 कॉमेडी</span><span class="tk t3">🍳 लाइफस्टाइल</span>
             </div></div>
             <div class="bF-inner"><div class="cta">▶ अभी फ्री में देखें</div></div>
+        </a>
+        <div class="skyline">
+            <svg viewBox="0 0 400 130" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M0 80 L0 62 L18 62 L18 48 L30 48 L30 66 L48 66 L48 52 L60 52 L60 70 L80 70 L86 42 L92 70 L112 70 L112 56 L126 56 L126 38 L134 38 L134 70 L160 70 L166 24 L172 70 L196 70 L196 50 L210 40 L224 50 L224 70 L250 70 L256 35 L262 70 L284 70 L284 54 L300 44 L316 54 L316 70 L340 70 L346 47 L352 70 L372 70 L372 58 L386 58 L386 80 L400 80 L400 86 Q200 132 0 86 Z" fill="#161021"/>
+                <circle cx="120" cy="18" r="9" fill="#D9008D"/><path d="M120 34 L113 22 L127 22 Z" fill="#D9008D"/>
+                <circle cx="290" cy="26" r="7" fill="#D9008D"/><path d="M290 38 L285 28 L295 28 Z" fill="#D9008D"/>
+                <circle cx="40" cy="34" r="5" fill="#D9008D"/><circle cx="370" cy="40" r="5" fill="#D9008D"/>
+            </svg>
+        </div>
+        <div class="hotspots">1,50,000+ लोकेशन पर उपलब्ध</div>
+    </div></div>
+
+    <!-- ================= #2-compact F ================= -->
+    <div class="variant-label">#2·compact — F-compact (~115px)</div>
+    <p class="variant-desc">Ticker keeps the motion + abundance, header row carries फ्री via gold badge, CTA inline. Roughly half the full F's height.</p>
+    <div class="device"><div class="scr">
+        <div class="fold"><span>यहाँ तक बिना स्क्रॉल दिखेगा</span></div>
+        <div class="statusbar"><span>11:38</span><span>LTE ▾▴ ▂▄▆ ▮</span></div>
+        <div class="chromebar"><div class="chromepill">🔒 i2e1.in/WiomNet/Payment…</div></div>
+        <div class="pg-head">
+            <div class="brand"><div class="brand-mark">∞</div><span class="brand-name">Wiom</span></div>
+            <div class="pg-help"><span class="h">मदद</span><span class="material-icons">translate</span></div>
+        </div>
+        <div class="tick"><span class="material-icons">check</span></div>
+        <div class="titles"><h2>भुगतान सफल हुआ!</h2><h2>अनलिमिटेड इंटरनेट का आनंद लें</h2></div>
+        <a class="bFc" href="https://satyam.wiom.in/tv">
+            <div class="bFc-row1"><span class="bFc-title">75+ TV चैनल, अब फोन पर</span><span class="goldfree">फ्री</span></div>
+            <div class="ticker sm"><div class="ticker-track">
+                <span class="tk t1">📰 न्यूज़</span><span class="tk t2">🎬 मूवीज़</span><span class="tk t3">🙏 भक्ति</span><span class="tk t4">🧒 कार्टून</span><span class="tk t2">🎵 म्यूज़िक</span><span class="tk t1">🏏 स्पोर्ट्स</span><span class="tk t4">😂 कॉमेडी</span><span class="tk t3">🍳 लाइफस्टाइल</span>
+                <span class="tk t1">📰 न्यूज़</span><span class="tk t2">🎬 मूवीज़</span><span class="tk t3">🙏 भक्ति</span><span class="tk t4">🧒 कार्टून</span><span class="tk t2">🎵 म्यूज़िक</span><span class="tk t1">🏏 स्पोर्ट्स</span><span class="tk t4">😂 कॉमेडी</span><span class="tk t3">🍳 लाइफस्टाइल</span>
+            </div></div>
+            <div class="bFc-row3"><span class="bFc-sub">इसी फोन पर — कोई चार्ज नहीं</span><span class="bFc-go">अभी देखें →</span></div>
         </a>
         <div class="skyline">
             <svg viewBox="0 0 400 130" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
