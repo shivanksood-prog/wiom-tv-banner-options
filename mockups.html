@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<!-- FULL-PAGE MOCKUPS — each ranked banner variant placed inside the real WiomNet payment-success page
+     (header / tick / headline / banner / skyline / caption), in a phone frame with an approximate fold line. -->
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<title>Wiom TV Banner — Success-Page Mockups</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+    body { margin: 0; background: #F1EDF7; font-family: 'Noto Sans Devanagari', 'Noto Sans', sans-serif; color: #161021; }
+    .wrap { max-width: 440px; margin: 0 auto; padding: 24px 16px 64px 16px; }
+    h1 { font-family: 'Noto Sans'; font-size: 20px; margin: 0 0 4px 0; }
+    .note { font-size: 13px; color: #5C5570; margin-bottom: 24px; line-height: 19px; }
+    .note a { color: #D9008D; }
+    .variant-label { font-family: 'Noto Sans'; font-weight: 700; font-size: 14px; color: #D9008D; margin: 40px 0 4px 0; }
+    .variant-desc { font-size: 12.5px; color: #5C5570; margin: 0 0 12px 0; line-height: 18px; }
+
+    /* ====== phone device frame ====== */
+    .device { width: 360px; max-width: 100%; margin: 0 auto; background: #0B0714; border-radius: 28px; padding: 8px; box-sizing: border-box; box-shadow: 0 8px 24px rgba(0,0,0,0.18); }
+    .scr { background: #fff; border-radius: 20px; overflow: hidden; position: relative; }
+    .statusbar { display: flex; justify-content: space-between; align-items: center; background: #161021; color: #fff; font-family: 'Noto Sans'; font-size: 11px; padding: 5px 14px; }
+    .chromebar { background: #161021; padding: 4px 10px 8px 10px; }
+    .chromepill { background: #352D42; color: #D7D3E0; font-family: 'Noto Sans'; font-size: 11.5px; border-radius: 9999px; padding: 6px 14px; }
+    .fold { position: absolute; left: 0; right: 0; top: 640px; border-top: 2px dashed #E01E00; z-index: 50; }
+    .fold span { position: absolute; right: 6px; top: -9px; background: #E01E00; color: #fff; font-size: 9px; font-weight: 700; padding: 1px 8px; border-radius: 9999px; font-family: 'Noto Sans Devanagari'; }
+
+    /* ====== real success-page elements ====== */
+    .pg-head { display: flex; padding: 14px 16px; align-items: center; justify-content: space-between; }
+    .brand { display: flex; align-items: center; gap: 7px; }
+    .brand-mark { width: 26px; height: 26px; border-radius: 7px; background: #D9008D; color: #fff; display: flex; align-items: center; justify-content: center; font-family: 'Noto Sans'; font-weight: 700; font-size: 14px; }
+    .brand-name { font-family: 'Noto Sans'; font-weight: 700; font-size: 17px; color: #D9008D; }
+    .pg-help { display: flex; align-items: center; gap: 12px; }
+    .pg-help span.h { font-family: 'Noto Sans'; font-weight: 700; font-size: 12.5px; color: #D9008D; }
+    .pg-help .material-icons { color: #352D42; font-size: 20px; }
+    .tick { width: 84px; height: 84px; margin: 4px auto 0 auto; border-radius: 50%; background: #1EBE5C; display: flex; align-items: center; justify-content: center; }
+    .tick .material-icons { color: #fff; font-size: 50px; }
+    .titles { text-align: center; padding: 0 12px; }
+    .titles h2 { color: #161021; font-size: 19px; font-weight: 700; margin: 8px 0 0 0; line-height: 26px; }
+    .skyline { margin-top: 6px; }
+    .skyline svg { display: block; width: 100%; height: auto; }
+    .hotspots { text-align: center; font-size: 11px; font-weight: 600; padding: 4px 0 14px 0; }
+
+    /* ====== shared banner pieces (from options v3) ====== */
+    .ph-land { background: #0B0714; border: 3px solid #443152; border-radius: 18px; padding: 7px 16px 7px 7px; position: relative; }
+    .ph-land::after { content: ''; position: absolute; right: 6px; top: 50%; transform: translateY(-50%); width: 5px; height: 5px; border-radius: 50%; background: #665E75; }
+    .ph-land .screen { border-radius: 12px; position: relative; overflow: hidden; }
+    .ph-port { background: #0B0714; border: 3px solid #443152; border-radius: 18px; padding: 14px 6px 12px 6px; position: relative; width: 88px; aspect-ratio: 9 / 19; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; }
+    .ph-port::before { content: ''; position: absolute; top: 6px; left: 50%; transform: translateX(-50%); width: 5px; height: 5px; border-radius: 50%; background: #665E75; }
+    .ph-port::after { content: ''; position: absolute; bottom: 5px; left: 50%; transform: translateX(-50%); width: 26px; height: 3px; border-radius: 9999px; background: #665E75; }
+    .ph-port .tiles { gap: 4px; }
+    .ph-port .tile { font-size: 8.5px; border-radius: 6px; aspect-ratio: 1 / 1; }
+    .ph-port .tile .em { font-size: 13px; }
+    .tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+    .tiles.two { grid-template-columns: 1fr 1fr; }
+    .tile { border-radius: 8px; aspect-ratio: 1 / 0.8; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; color: #fff; font-size: 10.5px; font-weight: 600; }
+    .tile .em { font-size: 18px; line-height: 1; }
+    .t1 { background: #6D17CE; } .t2 { background: #D9008D; } .t3 { background: #FF8000; } .t4 { background: #008043; }
+    .vidscreen { background: #6D17CE; aspect-ratio: 19/9; display: flex; align-items: center; justify-content: center; position: relative; }
+    .playbtn { width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,0.92); display: flex; align-items: center; justify-content: center; }
+    .playbtn .material-icons { color: #6D17CE; font-size: 25px; margin-left: 2px; }
+    .vidbar { position: absolute; left: 0; right: 0; bottom: 0; background: rgba(11,7,20,0.75); color: #fff; font-size: 10px; font-weight: 600; padding: 4px 9px; display: flex; align-items: center; justify-content: space-between; }
+    .live { display: inline-flex; align-items: center; gap: 5px; background: #E01E00; color: #fff; font-family: 'Noto Sans'; font-size: 10px; font-weight: 700; letter-spacing: 0.06em; padding: 3px 9px; border-radius: 9999px; }
+    .live .dot { width: 5px; height: 5px; border-radius: 50%; background: #fff; animation: blink 1.2s infinite; }
+    @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.25; } }
+    .goldfree { background: linear-gradient(120deg, #D5AF4A, #F2E983, #D5B14B); color: #372902; font-size: 11px; font-weight: 700; padding: 3px 11px; border-radius: 9999px; }
+    .gift { display: inline-flex; align-items: center; gap: 5px; background: #FFE5F6; color: #D9008D; font-size: 11.5px; font-weight: 700; padding: 4px 11px; border-radius: 9999px; }
+    .cta { margin-top: 12px; background: #D9008D; color: #fff; font-size: 14.5px; font-weight: 700; line-height: 22px; text-align: center; padding: 10px 14px; border-radius: 13px; }
+    .toprow { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+
+    /* C — reward framing */
+    .bC { display: block; width: 90%; margin: 14px auto 4px auto; box-sizing: border-box; background: #FFE5F6; border-radius: 18px; padding: 14px; text-decoration: none; position: relative; }
+    .bC .gift { background: #fff; }
+    .bC-play { position: absolute; right: 12px; top: 12px; color: #D9008D; font-size: 40px; }
+    .bC-title { color: #161021; font-size: 18px; font-weight: 700; line-height: 25px; margin-top: 9px; padding-right: 48px; }
+    .bC-chips { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 9px; }
+    .bC-chip { background: #fff; color: #161021; font-size: 11.5px; font-weight: 600; padding: 3px 10px; border-radius: 9999px; }
+    .bC-chip.more { background: transparent; color: #D9008D; font-weight: 700; }
+
+    /* F — ticker */
+    .bF { display: block; width: 90%; margin: 14px auto 4px auto; box-sizing: border-box; background: #161021; border-radius: 18px; padding: 14px 0; text-decoration: none; overflow: hidden; }
+    .bF-inner { padding: 0 14px; }
+    .bF-title { color: #FAF9FC; font-size: 18px; font-weight: 700; line-height: 25px; }
+    .bF-sub { color: #A7A1B2; font-size: 12.5px; line-height: 18px; margin-top: 2px; }
+    .ticker { overflow: hidden; margin: 10px 0 2px 0; }
+    .ticker-track { display: flex; gap: 7px; width: max-content; animation: scrollx 14s linear infinite; }
+    @keyframes scrollx { to { transform: translateX(-50%); } }
+    .tk { flex: 0 0 auto; border-radius: 9px; color: #fff; font-size: 11.5px; font-weight: 600; padding: 7px 12px; display: flex; align-items: center; gap: 5px; }
+
+    /* D — hybrid */
+    .bD { display: block; width: 90%; margin: 14px auto 4px auto; box-sizing: border-box; background: #fff; border: 1px solid #FFB2E4; border-radius: 18px; padding: 14px; text-decoration: none; }
+    .bD-title { color: #161021; font-size: 18px; font-weight: 700; line-height: 25px; margin-top: 10px; }
+    .bD-sub { color: #5C5570; font-size: 12.5px; line-height: 18px; margin-top: 2px; }
+    .bD .screen { background: #0B0714; aspect-ratio: 19 / 9; box-sizing: border-box; padding: 7px 9px; display: flex; flex-direction: column; gap: 5px; }
+    .bD-apphead { display: flex; align-items: center; justify-content: space-between; font-family: 'Noto Sans'; font-size: 8.5px; font-weight: 700; color: #FFB2E4; letter-spacing: 0.04em; }
+    .bD-apphead .live-mini { color: #fff; background: #E01E00; border-radius: 9999px; padding: 1px 6px; font-size: 7.5px; }
+    .bD .tiles { gap: 4px; flex: 1; }
+    .bD .tile { aspect-ratio: auto; font-size: 8.5px; border-radius: 5px; }
+    .bD .tile .em { font-size: 12px; }
+    .tile.tmore { background: #352D42; }
+
+    /* E — now playing */
+    .bE { display: block; width: 90%; margin: 14px auto 4px auto; box-sizing: border-box; background: #fff; border: 1px solid #FFB2E4; border-radius: 18px; padding: 14px; text-decoration: none; }
+    .bE-title { color: #161021; font-size: 18px; font-weight: 700; line-height: 25px; margin-top: 10px; }
+    .bE-sub { color: #5C5570; font-size: 12.5px; line-height: 18px; margin-top: 2px; }
+
+    /* B — explanatory */
+    .bB { display: block; width: 90%; margin: 14px auto 4px auto; box-sizing: border-box; background: #fff; border: 1px solid #FFB2E4; border-radius: 18px; padding: 14px; text-decoration: none; }
+    .bB-head { display: flex; align-items: center; gap: 12px; }
+    .bB-head .ph-port { flex: 0 0 88px; }
+    .bB-right { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 7px; }
+    .bB-new { display: inline-block; align-self: flex-start; background: #D9008D; color: #fff; font-size: 10px; font-weight: 700; padding: 2px 9px; border-radius: 9999px; }
+    .bB-title { color: #161021; font-size: 16px; font-weight: 700; line-height: 22px; }
+    .bB-rows { display: flex; flex-direction: column; gap: 6px; }
+    .bB-row { display: flex; align-items: center; gap: 7px; color: #161021; font-size: 11.5px; line-height: 16px; }
+    .bB-row .material-icons { color: #008043; font-size: 16px; }
+    .bB-rowfree { background: #E1FAED; border-radius: 9px; padding: 5px 7px; color: #008043; font-weight: 700; }
+
+    /* A — dark cinematic */
+    .bA { display: block; width: 90%; margin: 14px auto 4px auto; box-sizing: border-box; background: #161021; border-radius: 18px; padding: 14px; text-decoration: none; }
+    .bA .ph-land { border-color: #665E75; }
+    .bA-title { color: #FAF9FC; font-size: 18px; font-weight: 700; line-height: 25px; margin-top: 10px; }
+    .bA-sub { color: #A7A1B2; font-size: 12.5px; line-height: 18px; margin-top: 4px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+    <h1>Success-Page Mockups</h1>
+    <div class="note">Each ranked banner placed in the real payment-success page (header → tick → headline → <b>banner</b> → skyline → caption). The <span style="color:#E01E00; font-weight:700;">red dashed line</span> ≈ what a typical phone shows without scrolling. Variant designs: <a href="index.html">options page</a>.</div>
+
+    <!-- ================= #1 C ================= -->
+    <div class="variant-label">#1 · C″ — Reward framing</div>
+    <p class="variant-desc">Most compact of the six — skyline top still peeks above the fold, page feels least changed.</p>
+    <div class="device"><div class="scr">
+        <div class="fold"><span>यहाँ तक बिना स्क्रॉल दिखेगा</span></div>
+        <div class="statusbar"><span>11:38</span><span>LTE ▾▴ ▂▄▆ ▮</span></div>
+        <div class="chromebar"><div class="chromepill">🔒 i2e1.in/WiomNet/Payment…</div></div>
+        <div class="pg-head">
+            <div class="brand"><div class="brand-mark">∞</div><span class="brand-name">Wiom</span></div>
+            <div class="pg-help"><span class="h">मदद</span><span class="material-icons">translate</span></div>
+        </div>
+        <div class="tick"><span class="material-icons">check</span></div>
+        <div class="titles"><h2>भुगतान सफल हुआ!</h2><h2>अनलिमिटेड इंटरनेट का आनंद लें</h2></div>
+        <a class="bC" href="https://satyam.wiom.in/tv">
+            <span class="material-icons bC-play">play_circle</span>
+            <span class="gift">🎁 आपके रिचार्ज के साथ फ्री</span>
+            <div class="bC-title">75+ TV चैनल अब फोन पर!</div>
+            <div class="bC-chips"><span class="bC-chip">📰 न्यूज़</span><span class="bC-chip">🎬 मूवीज़</span><span class="bC-chip">🙏 भक्ति</span><span class="bC-chip">🧒 कार्टून</span><span class="bC-chip more">+ और भी</span></div>
+            <div class="cta">अभी फ्री में देखें →</div>
+        </a>
+        <div class="skyline">
+            <svg viewBox="0 0 400 130" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M0 80 L0 62 L18 62 L18 48 L30 48 L30 66 L48 66 L48 52 L60 52 L60 70 L80 70 L86 42 L92 70 L112 70 L112 56 L126 56 L126 38 L134 38 L134 70 L160 70 L166 24 L172 70 L196 70 L196 50 L210 40 L224 50 L224 70 L250 70 L256 35 L262 70 L284 70 L284 54 L300 44 L316 54 L316 70 L340 70 L346 47 L352 70 L372 70 L372 58 L386 58 L386 80 L400 80 L400 86 Q200 132 0 86 Z" fill="#161021"/>
+                <circle cx="120" cy="18" r="9" fill="#D9008D"/><path d="M120 34 L113 22 L127 22 Z" fill="#D9008D"/>
+                <circle cx="290" cy="26" r="7" fill="#D9008D"/><path d="M290 38 L285 28 L295 28 Z" fill="#D9008D"/>
+                <circle cx="40" cy="34" r="5" fill="#D9008D"/><circle cx="370" cy="40" r="5" fill="#D9008D"/>
+            </svg>
+        </div>
+        <div class="hotspots">1,50,000+ लोकेशन पर उपलब्ध</div>
+    </div></div>
+
+    <!-- ================= #2 F ================= -->
+    <div class="variant-label">#2 · F — Channel ticker</div>
+    <p class="variant-desc">Similar height to C; the moving ticker is the page's only motion — eye lands on it after the tick.</p>
+    <div class="device"><div class="scr">
+        <div class="fold"><span>यहाँ तक बिना स्क्रॉल दिखेगा</span></div>
+        <div class="statusbar"><span>11:38</span><span>LTE ▾▴ ▂▄▆ ▮</span></div>
+        <div class="chromebar"><div class="chromepill">🔒 i2e1.in/WiomNet/Payment…</div></div>
+        <div class="pg-head">
+            <div class="brand"><div class="brand-mark">∞</div><span class="brand-name">Wiom</span></div>
+            <div class="pg-help"><span class="h">मदद</span><span class="material-icons">translate</span></div>
+        </div>
+        <div class="tick"><span class="material-icons">check</span></div>
+        <div class="titles"><h2>भुगतान सफल हुआ!</h2><h2>अनलिमिटेड इंटरनेट का आनंद लें</h2></div>
+        <a class="bF" href="https://satyam.wiom.in/tv">
+            <div class="bF-inner">
+                <div class="toprow"><span class="live"><span class="dot"></span>LIVE TV</span><span class="goldfree">100% फ्री</span></div>
+                <div class="bF-title">75+ TV चैनल, अब फोन पर</div>
+                <div class="bF-sub">इसी फोन पर देखें — कोई ऐप नहीं</div>
+            </div>
+            <div class="ticker"><div class="ticker-track">
+                <span class="tk t1">📰 न्यूज़</span><span class="tk t2">🎬 मूवीज़</span><span class="tk t3">🙏 भक्ति</span><span class="tk t4">🧒 कार्टून</span><span class="tk t2">🎵 म्यूज़िक</span><span class="tk t1">🏏 स्पोर्ट्स</span><span class="tk t4">😂 कॉमेडी</span><span class="tk t3">🍳 लाइफस्टाइल</span>
+                <span class="tk t1">📰 न्यूज़</span><span class="tk t2">🎬 मूवीज़</span><span class="tk t3">🙏 भक्ति</span><span class="tk t4">🧒 कार्टून</span><span class="tk t2">🎵 म्यूज़िक</span><span class="tk t1">🏏 स्पोर्ट्स</span><span class="tk t4">😂 कॉमेडी</span><span class="tk t3">🍳 लाइफस्टाइल</span>
+            </div></div>
+            <div class="bF-inner"><div class="cta">▶ अभी फ्री में देखें</div></div>
+        </a>
+        <div class="skyline">
+            <svg viewBox="0 0 400 130" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M0 80 L0 62 L18 62 L18 48 L30 48 L30 66 L48 66 L48 52 L60 52 L60 70 L80 70 L86 42 L92 70 L112 70 L112 56 L126 56 L126 38 L134 38 L134 70 L160 70 L166 24 L172 70 L196 70 L196 50 L210 40 L224 50 L224 70 L250 70 L256 35 L262 70 L284 70 L284 54 L300 44 L316 54 L316 70 L340 70 L346 47 L352 70 L372 70 L372 58 L386 58 L386 80 L400 80 L400 86 Q200 132 0 86 Z" fill="#161021"/>
+                <circle cx="120" cy="18" r="9" fill="#D9008D"/><path d="M120 34 L113 22 L127 22 Z" fill="#D9008D"/>
+                <circle cx="290" cy="26" r="7" fill="#D9008D"/><path d="M290 38 L285 28 L295 28 Z" fill="#D9008D"/>
+                <circle cx="40" cy="34" r="5" fill="#D9008D"/><circle cx="370" cy="40" r="5" fill="#D9008D"/>
+            </svg>
+        </div>
+        <div class="hotspots">1,50,000+ लोकेशन पर उपलब्ध</div>
+    </div></div>
+
+    <!-- ================= #3 D ================= -->
+    <div class="variant-label">#3 · D″ — Hybrid (phone grid + gold फ्री + gift)</div>
+    <p class="variant-desc">Taller — the phone graphic pushes the skyline fully below the fold; banner owns the first screen.</p>
+    <div class="device"><div class="scr">
+        <div class="fold"><span>यहाँ तक बिना स्क्रॉल दिखेगा</span></div>
+        <div class="statusbar"><span>11:38</span><span>LTE ▾▴ ▂▄▆ ▮</span></div>
+        <div class="chromebar"><div class="chromepill">🔒 i2e1.in/WiomNet/Payment…</div></div>
+        <div class="pg-head">
+            <div class="brand"><div class="brand-mark">∞</div><span class="brand-name">Wiom</span></div>
+            <div class="pg-help"><span class="h">मदद</span><span class="material-icons">translate</span></div>
+        </div>
+        <div class="tick"><span class="material-icons">check</span></div>
+        <div class="titles"><h2>भुगतान सफल हुआ!</h2><h2>अनलिमिटेड इंटरनेट का आनंद लें</h2></div>
+        <a class="bD" href="https://satyam.wiom.in/tv">
+            <div class="toprow"><span class="gift">🎁 आपके रिचार्ज के साथ</span><span class="goldfree">100% फ्री</span></div>
+            <div class="ph-land"><div class="screen">
+                <div class="bD-apphead"><span>WIOM TV</span><span class="live-mini">LIVE</span></div>
+                <div class="tiles">
+                    <div class="tile t1"><span class="em">📰</span>न्यूज़</div>
+                    <div class="tile t2"><span class="em">🎬</span>मूवीज़</div>
+                    <div class="tile t3"><span class="em">🙏</span>भक्ति</div>
+                    <div class="tile t4"><span class="em">🧒</span>कार्टून</div>
+                    <div class="tile t4"><span class="em">🎵</span>म्यूज़िक</div>
+                    <div class="tile t3"><span class="em">🏏</span>स्पोर्ट्स</div>
+                    <div class="tile t2"><span class="em">😂</span>कॉमेडी</div>
+                    <div class="tile tmore">75+ चैनल</div>
+                </div>
+            </div></div>
+            <div class="bD-title">75+ TV चैनल, अब आपके फोन पर</div>
+            <div class="bD-sub">इसी फोन पर देखें — कोई ऐप नहीं, कोई चार्ज नहीं</div>
+            <div class="cta">अभी फ्री में देखें →</div>
+        </a>
+        <div class="skyline">
+            <svg viewBox="0 0 400 130" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M0 80 L0 62 L18 62 L18 48 L30 48 L30 66 L48 66 L48 52 L60 52 L60 70 L80 70 L86 42 L92 70 L112 70 L112 56 L126 56 L126 38 L134 38 L134 70 L160 70 L166 24 L172 70 L196 70 L196 50 L210 40 L224 50 L224 70 L250 70 L256 35 L262 70 L284 70 L284 54 L300 44 L316 54 L316 70 L340 70 L346 47 L352 70 L372 70 L372 58 L386 58 L386 80 L400 80 L400 86 Q200 132 0 86 Z" fill="#161021"/>
+                <circle cx="120" cy="18" r="9" fill="#D9008D"/><path d="M120 34 L113 22 L127 22 Z" fill="#D9008D"/>
+                <circle cx="290" cy="26" r="7" fill="#D9008D"/><path d="M290 38 L285 28 L295 28 Z" fill="#D9008D"/>
+                <circle cx="40" cy="34" r="5" fill="#D9008D"/><circle cx="370" cy="40" r="5" fill="#D9008D"/>
+            </svg>
+        </div>
+        <div class="hotspots">1,50,000+ लोकेशन पर उपलब्ध</div>
+    </div></div>
+
+    <!-- ================= #4 E ================= -->
+    <div class="variant-label">#4 · E″ — "Now Playing"</div>
+    <p class="variant-desc">Same height class as D — play screen above the fold, skyline below.</p>
+    <div class="device"><div class="scr">
+        <div class="fold"><span>यहाँ तक बिना स्क्रॉल दिखेगा</span></div>
+        <div class="statusbar"><span>11:38</span><span>LTE ▾▴ ▂▄▆ ▮</span></div>
+        <div class="chromebar"><div class="chromepill">🔒 i2e1.in/WiomNet/Payment…</div></div>
+        <div class="pg-head">
+            <div class="brand"><div class="brand-mark">∞</div><span class="brand-name">Wiom</span></div>
+            <div class="pg-help"><span class="h">मदद</span><span class="material-icons">translate</span></div>
+        </div>
+        <div class="tick"><span class="material-icons">check</span></div>
+        <div class="titles"><h2>भुगतान सफल हुआ!</h2><h2>अनलिमिटेड इंटरनेट का आनंद लें</h2></div>
+        <a class="bE" href="https://satyam.wiom.in/tv">
+            <div class="ph-land"><div class="screen">
+                <div class="vidscreen">
+                    <div class="playbtn"><span class="material-icons">play_arrow</span></div>
+                    <div class="vidbar"><span>📰 न्यूज़ चैनल</span><span class="live" style="padding:2px 7px;"><span class="dot"></span>LIVE</span></div>
+                </div>
+            </div></div>
+            <div class="bE-title">TV चालू करें — 75+ चैनल</div>
+            <div class="bE-sub">🎁 आपके रिचार्ज के साथ बिल्कुल फ्री, इसी फोन पर</div>
+            <div class="cta">▶ अभी चलाएं</div>
+        </a>
+        <div class="skyline">
+            <svg viewBox="0 0 400 130" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M0 80 L0 62 L18 62 L18 48 L30 48 L30 66 L48 66 L48 52 L60 52 L60 70 L80 70 L86 42 L92 70 L112 70 L112 56 L126 56 L126 38 L134 38 L134 70 L160 70 L166 24 L172 70 L196 70 L196 50 L210 40 L224 50 L224 70 L250 70 L256 35 L262 70 L284 70 L284 54 L300 44 L316 54 L316 70 L340 70 L346 47 L352 70 L372 70 L372 58 L386 58 L386 80 L400 80 L400 86 Q200 132 0 86 Z" fill="#161021"/>
+                <circle cx="120" cy="18" r="9" fill="#D9008D"/><path d="M120 34 L113 22 L127 22 Z" fill="#D9008D"/>
+                <circle cx="290" cy="26" r="7" fill="#D9008D"/><path d="M290 38 L285 28 L295 28 Z" fill="#D9008D"/>
+                <circle cx="40" cy="34" r="5" fill="#D9008D"/><circle cx="370" cy="40" r="5" fill="#D9008D"/>
+            </svg>
+        </div>
+        <div class="hotspots">1,50,000+ लोकेशन पर उपलब्ध</div>
+    </div></div>
+
+    <!-- ================= #5 B ================= -->
+    <div class="variant-label">#5 · B″ — Explanatory</div>
+    <p class="variant-desc">Mid-height after the side-by-side fix; benefit rows readable above the fold.</p>
+    <div class="device"><div class="scr">
+        <div class="fold"><span>यहाँ तक बिना स्क्रॉल दिखेगा</span></div>
+        <div class="statusbar"><span>11:38</span><span>LTE ▾▴ ▂▄▆ ▮</span></div>
+        <div class="chromebar"><div class="chromepill">🔒 i2e1.in/WiomNet/Payment…</div></div>
+        <div class="pg-head">
+            <div class="brand"><div class="brand-mark">∞</div><span class="brand-name">Wiom</span></div>
+            <div class="pg-help"><span class="h">मदद</span><span class="material-icons">translate</span></div>
+        </div>
+        <div class="tick"><span class="material-icons">check</span></div>
+        <div class="titles"><h2>भुगतान सफल हुआ!</h2><h2>अनलिमिटेड इंटरनेट का आनंद लें</h2></div>
+        <a class="bB" href="https://satyam.wiom.in/tv">
+            <div class="bB-head">
+                <div class="ph-port"><div class="tiles two">
+                    <div class="tile t1"><span class="em">📰</span>न्यूज़</div>
+                    <div class="tile t2"><span class="em">🎬</span>मूवीज़</div>
+                    <div class="tile t3"><span class="em">🙏</span>भक्ति</div>
+                    <div class="tile t4"><span class="em">🧒</span>कार्टून</div>
+                    <div class="tile t2"><span class="em">🎵</span>म्यूज़िक</div>
+                    <div class="tile t1"><span class="em">🏏</span>स्पोर्ट्स</div>
+                </div></div>
+                <div class="bB-right">
+                    <span class="bB-new">नया</span>
+                    <div class="bB-title">75+ TV चैनल — अब फोन पर</div>
+                    <div class="bB-rows">
+                        <div class="bB-row bB-rowfree"><span class="material-icons">check_circle</span>बिल्कुल फ्री — कोई चार्ज नहीं</div>
+                        <div class="bB-row"><span class="material-icons">check_circle</span>न्यूज़, मूवीज़, भक्ति — सब LIVE</div>
+                        <div class="bB-row"><span class="material-icons">check_circle</span>इसी फोन पर, बिना ऐप</div>
+                    </div>
+                </div>
+            </div>
+            <div class="cta">फ्री में देखना शुरू करें</div>
+        </a>
+        <div class="skyline">
+            <svg viewBox="0 0 400 130" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M0 80 L0 62 L18 62 L18 48 L30 48 L30 66 L48 66 L48 52 L60 52 L60 70 L80 70 L86 42 L92 70 L112 70 L112 56 L126 56 L126 38 L134 38 L134 70 L160 70 L166 24 L172 70 L196 70 L196 50 L210 40 L224 50 L224 70 L250 70 L256 35 L262 70 L284 70 L284 54 L300 44 L316 54 L316 70 L340 70 L346 47 L352 70 L372 70 L372 58 L386 58 L386 80 L400 80 L400 86 Q200 132 0 86 Z" fill="#161021"/>
+                <circle cx="120" cy="18" r="9" fill="#D9008D"/><path d="M120 34 L113 22 L127 22 Z" fill="#D9008D"/>
+                <circle cx="290" cy="26" r="7" fill="#D9008D"/><path d="M290 38 L285 28 L295 28 Z" fill="#D9008D"/>
+                <circle cx="40" cy="34" r="5" fill="#D9008D"/><circle cx="370" cy="40" r="5" fill="#D9008D"/>
+            </svg>
+        </div>
+        <div class="hotspots">1,50,000+ लोकेशन पर उपलब्ध</div>
+    </div></div>
+
+    <!-- ================= #6 A ================= -->
+    <div class="variant-label">#6 · A″ — Dark cinematic</div>
+    <p class="variant-desc">Tallest + highest contrast; CTA sits near the fold, skyline fully below.</p>
+    <div class="device"><div class="scr">
+        <div class="fold"><span>यहाँ तक बिना स्क्रॉल दिखेगा</span></div>
+        <div class="statusbar"><span>11:38</span><span>LTE ▾▴ ▂▄▆ ▮</span></div>
+        <div class="chromebar"><div class="chromepill">🔒 i2e1.in/WiomNet/Payment…</div></div>
+        <div class="pg-head">
+            <div class="brand"><div class="brand-mark">∞</div><span class="brand-name">Wiom</span></div>
+            <div class="pg-help"><span class="h">मदद</span><span class="material-icons">translate</span></div>
+        </div>
+        <div class="tick"><span class="material-icons">check</span></div>
+        <div class="titles"><h2>भुगतान सफल हुआ!</h2><h2>अनलिमिटेड इंटरनेट का आनंद लें</h2></div>
+        <a class="bA" href="https://satyam.wiom.in/tv">
+            <div class="toprow"><span class="live"><span class="dot"></span>LIVE TV</span><span class="goldfree">100% फ्री</span></div>
+            <div class="ph-land"><div class="screen">
+                <div class="vidscreen">
+                    <div class="playbtn"><span class="material-icons">play_arrow</span></div>
+                    <div class="vidbar"><span>📰 न्यूज़ चैनल</span><span>LIVE</span></div>
+                </div>
+            </div></div>
+            <div class="bA-title">आपका फोन, अब आपका TV</div>
+            <div class="bA-sub">75+ TV चैनल इसी फोन पर — कोई ऐप नहीं, कोई चार्ज नहीं</div>
+            <div class="cta">अभी फ्री में देखें →</div>
+        </a>
+        <div class="skyline">
+            <svg viewBox="0 0 400 130" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M0 80 L0 62 L18 62 L18 48 L30 48 L30 66 L48 66 L48 52 L60 52 L60 70 L80 70 L86 42 L92 70 L112 70 L112 56 L126 56 L126 38 L134 38 L134 70 L160 70 L166 24 L172 70 L196 70 L196 50 L210 40 L224 50 L224 70 L250 70 L256 35 L262 70 L284 70 L284 54 L300 44 L316 54 L316 70 L340 70 L346 47 L352 70 L372 70 L372 58 L386 58 L386 80 L400 80 L400 86 Q200 132 0 86 Z" fill="#161021"/>
+                <circle cx="120" cy="18" r="9" fill="#D9008D"/><path d="M120 34 L113 22 L127 22 Z" fill="#D9008D"/>
+                <circle cx="290" cy="26" r="7" fill="#D9008D"/><path d="M290 38 L285 28 L295 28 Z" fill="#D9008D"/>
+                <circle cx="40" cy="34" r="5" fill="#D9008D"/><circle cx="370" cy="40" r="5" fill="#D9008D"/>
+            </svg>
+        </div>
+        <div class="hotspots">1,50,000+ लोकेशन पर उपलब्ध</div>
+    </div></div>
+</div>
+</body>
+</html>
