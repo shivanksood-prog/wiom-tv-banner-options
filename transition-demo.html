@@ -1,0 +1,1248 @@
+<html>
+<head>
+    <title>i2e1</title>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="~/listing/loader.css" />
+    <style type="text/css">
+        body {
+            font-family: 'Noto Sans';
+        }
+
+        .login.container {
+            height: 25rem;
+        }
+
+        .ss-exp {
+            font-size: 2rem;
+            color: #484848;
+            height: 24rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+        }
+
+            .ss-exp a {
+                font-size: 1.5rem;
+                margin-top: 1rem;
+            }
+            .flex-center {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                color: #161021;
+                background-color: #F1EDF7;
+                width: 100%;
+                height: 96px;
+                cursor: pointer;
+            }
+
+                        #cancel-button {
+                line-height: 24px;
+                margin-top: 2rem;
+                color: #666;
+            }
+
+/* ===== Wiom TV banner (Option B) + success-compress transition ===== */
+        .tv-banner-card {
+            display: none;
+            width: 90%;
+            max-width: 40rem;
+            margin: 12px auto 0 auto;
+            box-sizing: border-box;
+            background: #fff;
+            border: 1px solid #FFB2E4;
+            border-radius: 20px;
+            padding: 16px;
+            text-decoration: none;
+            opacity: 0;
+            transform: translateY(14px);
+            transition: opacity .8s ease, transform .8s ease;
+        }
+
+        .tv-banner-card.show { display: block; }
+
+        .tv-banner-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .tvb-head { display: flex; align-items: center; gap: 14px; }
+
+        .tvb-phone {
+            flex: 0 0 96px;
+            width: 96px;
+            aspect-ratio: 9 / 19;
+            box-sizing: border-box;
+            background: #0B0714;
+            border: 3px solid #443152;
+            border-radius: 18px;
+            padding: 14px 6px 12px 6px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .tvb-phone::before { content: ''; position: absolute; top: 6px; left: 50%; transform: translateX(-50%); width: 5px; height: 5px; border-radius: 50%; background: #665E75; }
+        .tvb-phone::after { content: ''; position: absolute; bottom: 5px; left: 50%; transform: translateX(-50%); width: 28px; height: 3px; border-radius: 9999px; background: #665E75; }
+
+        .tvb-tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+        .tvb-tile { border-radius: 6px; aspect-ratio: 1 / 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; color: #fff; font-size: 9px; font-weight: 600; }
+        .tvb-tile .em { font-size: 14px; line-height: 1; }
+        .tvb-g1 { background: #6D17CE; }
+        .tvb-g2 { background: #D9008D; }
+        .tvb-g3 { background: #FF8000; }
+        .tvb-g4 { background: #008043; }
+
+        .tvb-right { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 8px; align-items: center; text-align: center; }
+        .tvb-new { display: inline-block; align-self: center; background: #D9008D; color: #fff; font-size: 11px; font-weight: 700; padding: 2px 10px; border-radius: 9999px; }
+        .tvb-title { color: #161021; font-size: 17px; font-weight: 700; line-height: 23px; }
+        .tvb-rows { display: flex; flex-direction: column; gap: 7px; }
+        .tvb-row { display: flex; align-items: center; justify-content: center; gap: 8px; color: #161021; font-size: 12.5px; line-height: 17px; }
+        .tvb-row .material-icons { color: #008043; font-size: 17px; }
+        .tvb-rowfree { background: #E1FAED; border-radius: 10px; padding: 6px 8px; color: #008043; font-weight: 700; }
+        .tvb-cta { margin-top: 4px; align-self: stretch; background: #D9008D; color: #fff; font-size: 15px; font-weight: 700; line-height: 22px; text-align: center; padding: 10px 12px; border-radius: 12px; }
+
+        /* squeeze phase: success content condenses IN PLACE — column layout is kept,
+           so every changed property (size, font, margin) animates smoothly */
+        #success.tv-mode #container {
+            padding: 4px 0;
+        }
+
+        #success.tv-mode #success-image {
+            height: 40px !important;
+            width: 40px !important;
+            transition: height .9s ease, width .9s ease !important;
+        }
+
+        #success.tv-mode #success-title {
+            margin-top: 0 !important;
+            transition: margin .9s ease !important;
+        }
+
+        #success.tv-mode #success-title h2 {
+            font-size: 15px !important;
+            line-height: 20px !important;
+            margin: 2px 0 0 0 !important;
+            transition: font-size .9s ease, line-height .9s ease, margin .9s ease;
+        }
+
+                /* Survey Popup Styles */
+        .survey-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .survey-modal {
+            background: linear-gradient(135deg, #f8e8f5 0%, #e8d5f0 100%);
+            border-radius: 16px 16px 0 0;
+            width: 100%;
+            max-width: 100vw;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.3);
+            animation: slideUpFromBottom 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform-origin: bottom center;
+        }
+
+        @@keyframes slideUpFromBottom {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @@keyframes slideDownToBottom {
+            from {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+        }
+
+        .survey-modal.closing {
+            animation: slideDownToBottom 0.3s ease-in;
+        }
+
+        .survey-slider {
+            width: 100px;
+            height: 4px;
+            border-radius: 4px;
+            background: #D7D3E0;
+            margin: 12px auto 0 auto;
+        }
+
+        .survey-content {
+            padding: 25px 20px 12px 20px;
+            text-align: center;
+        }
+
+        .survey-icon {
+            margin-bottom: 20px;
+        }
+
+        .phone-illustration {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .phone-illustration img {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+            position: relative;
+            z-index: 999;
+            left: 0;
+            top: 0;
+        }
+
+        .survey-text {
+            margin-bottom: 35px;
+        }
+
+        .survey-text h2 {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 32px;
+            color: #161021;
+            align-self: stretch;
+            margin: 0;
+            padding: 0 15px;
+            margin-bottom: 40px;
+            margin-top: 36px;
+            text-align: left;
+        }
+
+        .survey-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .survey-btn-primary {
+            background: linear-gradient(135deg, #D92B90 0%, #B8236F 100%);
+            color: #FAF9FC;
+            border: none;
+            border-radius: 16px;
+            padding: 12px 16px;
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 24px;
+            text-align: center;
+            flex: 1 0 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(217, 43, 144, 0.3);
+        }
+
+        .survey-btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(217, 43, 144, 0.4);
+        }
+
+        .survey-btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .survey-btn-secondary {
+            background: transparent;
+            color: #665E75;
+            border: none;
+            padding: 12px 24px;
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 20px;
+            text-align: center;
+            text-decoration-line: underline;
+            text-decoration-style: solid;
+            text-decoration-skip-ink: auto;
+            text-decoration-thickness: auto;
+            text-underline-offset: auto;
+            text-underline-position: from-font;
+            box-shadow: none;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .survey-btn-secondary:hover {
+            color: #333;
+        }
+
+        /* Responsive adjustments */
+        @@media (max-width: 480px) {
+            .survey-modal {
+                border-radius: 16px 16px 0 0;
+                max-width: 100%;
+                margin: 0;
+            }
+            
+            .survey-content {
+                padding: 60px 15px 8px 15px;
+            }
+            
+            .survey-icon {
+                margin-bottom: 15px;
+            }
+            
+            .survey-text {
+                margin-bottom: 30px;
+            }
+            
+            .survey-text h2 {
+                font-size: 24px;
+                font-weight: 700;
+                line-height: 28px;
+                color: #161021;
+                padding: 0 2px;
+                margin-bottom: 40px;
+                margin-top: 36px;
+                text-align: left;
+            }
+            
+            .phone-illustration {
+                width: 100px;
+                height: 100px;
+                margin-bottom: 24px;
+            }
+            
+            .phone-illustration img {
+                left: -120px;
+                top: 0;
+            }
+        }
+
+        @@media (min-width: 481px) {
+            .survey-overlay {
+                align-items: center;
+                padding: 20px;
+            }
+            
+            .survey-modal {
+                border-radius: 16px;
+                max-width: 400px;
+                animation: slideUp 0.3s ease-out;
+            }
+        }
+
+        @@keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="@Util.GetUrlWithVersion("/Templates/i2e1/site.css")" />
+    <script src="@Util.GetUrlWithVersion("/jsLibs/jquery.js")"></script>
+    <script src="@Util.GetUrlWithVersion("/Templates/i2e1/i2e1-sdk.js")"></script>
+    <script type="text/javascript">
+        var currLang = window.localStorage && window.localStorage.getItem('currLanguage');
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.9.6/lottie.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+</head>
+<body style=" background-color: #fff; font-family: 'Noto Sans Devanagari', sans-serif !important;">
+
+    <div id="loader" style="display:none">
+        <div style="display: flex; align-items: center; justify-content: space-between; padding: 1.5rem;">
+            <div style="display: flex; align-items: center;">
+                <span style="width: 28px; height: 28px; border-radius: 8px; background: #D9008D; color: #fff; display: flex; align-items: center; justify-content: center; font-family: 'Noto Sans'; font-weight: 700; font-size: 16px; margin-right: 8px;">&infin;</span>
+                <span style="font-family: 'Noto Sans'; font-weight: 700; font-size: 1.25rem; line-height: 1.75rem; letter-spacing: 0px; color: #D9008D;">Wiom</span>
+            </div>
+            <div style="display: flex; align-items: center;">
+                <a id="help-text" href="tel:8880322222" class="help-text" style="margin-right: 1em; cursor: pointer; font-family: 'Noto Sans' ;font-weight: 700; font-size: 0.875rem; line-height: 1.25rem; letter-spacing: 0px; text-align: center; color: #D9008D; text-decoration: none;">Help</a>
+                <span class="material-icons" onclick="toggleLanguage()" style="cursor: pointer; color: #352D42; font-size: 24px;">translate</span>
+            </div>
+        </div>
+        <div class="col-center" id="demo" style="margin-top:5rem; display: flex; flex-direction: column; align-items: center;">
+            <div id="payment-loader-animation" style="width: 96px; height: 96px; "></div>
+            <div id="please-wait" style="font-family:'Noto Sans'; font-size:24px; font-weight:700; color:rgba(22, 16, 33, 1) ; margin-bottom:12px;">धैर्य रखें</div>
+            <div id="please-wait-sub" style="font-family:'Noto Sans'; font-size:16px; font-weight:400; color:rgba(22, 16, 33, 1); margin-bottom:24px;">भुगतान की स्थिति जाँची जा रही है</div>
+            <div id="timer" style="font-family:'Noto Sans'; font-size:14px; font-weight:400; margin-bottom:96px; color:rgba(224, 30, 0, 1);"></div>
+
+        </div>
+        <div class="flex-center" >
+			<h3 id="cancel-button" style="line-height: 24px;">भुगतान पूरा होने तक बैक बटन न दबाएँ <br>एवं इस स्क्रीन को बंद न करें</h3>
+		</div>
+    </div>
+
+    <div>
+        <div id="success" class="" style="margin:0 auto;color: #1a1a1a;height:auto;display: block; max-width: 40rem; letter-spacing: 0">
+            <div style="display: flex;padding:1.5rem; align-items: center; justify-content: space-between">
+                 <div style="display: flex; align-items: center;">
+                    <span style="width: 28px; height: 28px; border-radius: 8px; background: #D9008D; color: #fff; display: flex; align-items: center; justify-content: center; font-family: 'Noto Sans'; font-weight: 700; font-size: 16px; margin-right: 8px;">&infin;</span>
+                    <span style="font-family: 'Noto Sans'; font-weight: 700; font-size: 1.25rem; line-height: 1.75rem; letter-spacing: 0px; color: #D9008D;">Wiom</span>
+                </div>
+                <div style="display: flex; align-items: center;">
+                    <a id="help-text" href="tel:8880322222" class="help-text" style="margin-right: 1em; cursor: pointer; font-family: 'Noto Sans' ;font-weight: 700; font-size: 0.875rem; line-height: 1.25rem; letter-spacing: 0px; text-align: center; color: #D9008D; text-decoration: none;">Help</a>
+                    <span class="material-icons" onclick="toggleLanguage()" style="cursor: pointer; color: #352D42; font-size: 24px;">translate</span>
+                </div>
+            </div>
+                <div id="container" style="
+                    transition-property: all; 
+                    transition-duration: 2s; 
+                    background-color: white; 
+                    box-sizing: border-box; 
+                    display: flex;             /* <-- Change to flex directly */
+                    align-items: center;       /* center vertically */
+                    justify-content: center;   /* center horizontally */
+                    flex-direction: column;       /* row layout */
+                    height: auto;              /* not fixed height */
+                    width: 90%; 
+                    max-width: 40rem;
+                    border-color: white; 
+                    border-width: 1px; 
+                    border-style: solid; 
+                    border-radius: 16px;
+                    margin-left: auto;
+                    margin-right: auto;
+                ">
+                <div id="suc-image-container" style="
+                    display: flex; 
+                    align-items: center; 
+                    justify-content: center;
+                    width: auto;
+                    margin: 0;
+                ">
+                    <div id="success-image" style="height: 96px; width: 96px; transition-property: all; transition-duration: 2s;">
+                        <div style="width: 100%; height: 100%; border-radius: 50%; background: #1EBE5C; display: flex; align-items: center; justify-content: center;">
+                            <svg viewBox="0 0 24 24" style="width: 58%; height: 58%;"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" fill="#fff"/></svg>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div id="success-title" style="width: 100%;  font-size: 1rem; margin-top: 0px; transition-property: all; transition-duration: 2s; text-align: center;">
+                    <h2 id="success-title1" style="color: #161021; font-size: 24px ; font-weight:700;">भुगतान सफल हुआ!</h2>
+                    <h2 id="success-title2" style="color: #161021; font-size: 24px ; font-weight:700; margin-top: -0.5rem;">अनलिमिटेड इंटरनेट का आनंद लें</h2>
+                </div>
+            </div>
+            <!-- Wiom TV banner (Option B) — revealed after success compresses -->
+            <a id="tv-banner" class="tv-banner-card" href="https://satyam.wiom.in/tv" target="_blank" rel="noopener" onclick="logTvBannerClick()">
+                <div class="tvb-head">
+                    <div class="tvb-phone">
+                        <div class="tvb-tiles">
+                            <div class="tvb-tile tvb-g1"><span class="em">📰</span><span class="lbl">न्यूज़</span></div>
+                            <div class="tvb-tile tvb-g2"><span class="em">🎬</span><span class="lbl">मूवीज़</span></div>
+                            <div class="tvb-tile tvb-g3"><span class="em">🙏</span><span class="lbl">भक्ति</span></div>
+                            <div class="tvb-tile tvb-g4"><span class="em">🧒</span><span class="lbl">कार्टून</span></div>
+                            <div class="tvb-tile tvb-g2"><span class="em">🎵</span><span class="lbl">म्यूज़िक</span></div>
+                            <div class="tvb-tile tvb-g1"><span class="em">🏏</span><span class="lbl">स्पोर्ट्स</span></div>
+                        </div>
+                    </div>
+                    <div class="tvb-right">
+                        <span id="tv-banner-badge" class="tvb-new">नया</span>
+                        <div id="tv-banner-title" class="tvb-title">75+ TV चैनल, इसी फोन पर</div>
+                        <div class="tvb-rows">
+                            <div class="tvb-row tvb-rowfree"><span id="tv-banner-row1">🎁 आपके रिचार्ज के साथ बिल्कुल फ्री</span></div>
+                            <div class="tvb-row"><span class="material-icons">check_circle</span><span id="tv-banner-row2">बिना ऐप, बिना इंस्टॉल</span></div>
+                        </div>
+                        <div id="tv-banner-cta" class="tvb-cta">अभी देखें →</div>
+                    </div>
+                </div>
+            </a>
+            <div id="pay_ss" style="position: relative; max-height: 26rem; max-width: 40rem; opacity: 1; transition-property: all; transition-duration: 2s;">
+                <svg viewBox="0 0 400 130" style="width: 100%; display: block;" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M0 80 L0 62 L18 62 L18 48 L30 48 L30 66 L48 66 L48 52 L60 52 L60 70 L80 70 L86 42 L92 70 L112 70 L112 56 L126 56 L126 38 L134 38 L134 70 L160 70 L166 24 L172 70 L196 70 L196 50 L210 40 L224 50 L224 70 L250 70 L256 35 L262 70 L284 70 L284 54 L300 44 L316 54 L316 70 L340 70 L346 47 L352 70 L372 70 L372 58 L386 58 L386 80 L400 80 L400 86 Q200 132 0 86 Z" fill="#161021"/>
+                    <circle cx="120" cy="18" r="9" fill="#D9008D"/><path d="M120 34 L113 22 L127 22 Z" fill="#D9008D"/>
+                    <circle cx="290" cy="26" r="7" fill="#D9008D"/><path d="M290 38 L285 28 L295 28 Z" fill="#D9008D"/>
+                    <circle cx="40" cy="34" r="5" fill="#D9008D"/><circle cx="370" cy="40" r="5" fill="#D9008D"/>
+                </svg>
+                <div id="hotspot_count" style="text-align: center; font-size: 0.75rem;margin-top=1rem; padding-bottom: 1rem; border-radius: 8px; display: inline-block;font-weight:600; white-space: nowrap;">1,50,000+ locations available</div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div id="failure" class="" style="margin:0 auto;color: #1a1a1a;height:auto;display: none;max-width: 40rem; letter-spacing: 0; height:100%;">
+            <div style="display: flex; flex-direction: column; height: 100%;">
+            <div style="display: flex;padding:1.5rem; align-items: center; justify-content: space-between">
+                <div style="display: flex; align-items: center;">
+                    <span style="width: 28px; height: 28px; border-radius: 8px; background: #D9008D; color: #fff; display: flex; align-items: center; justify-content: center; font-family: 'Noto Sans'; font-weight: 700; font-size: 16px; margin-right: 8px;">&infin;</span>
+                    <span style="font-family: 'Noto Sans'; font-weight: 700; font-size: 1.25rem; line-height: 1.75rem; letter-spacing: 0px; color: #D9008D;">Wiom</span>
+                </div>
+                <div style="display: flex; align-items: center;">
+                    <a id="help-text" href="tel:8880322222" class="help-text" style="margin-right: 1em; cursor: pointer; font-family: 'Noto Sans'; font-weight: 700; font-size: 0.875rem; line-height: 1.25rem; letter-spacing: 0px; text-align: center; color: #D9008D; text-decoration: none;">Help</a>
+                    <span class="material-icons" onclick="toggleLanguage()" style="cursor: pointer; color: #352D42; font-size: 24px;">translate</span>
+                </div>
+            </div>
+            
+            <div style="margin-top: 40px">
+            <div id="failure-animation" style="width: 96px; height: 96px; margin: 0 auto;"></div>
+            </div>
+
+            <h2 id="failure-title1" style="color: #1a1a1a; width: 90%; margin: 1rem auto">भुगतान असफल रहा</h2>
+            
+            
+            <p id="failure-title2" style="color:#1a1a1a; font-size: 16px; margin-bottom:2rem; padding: 0 1.3rem">
+                चिंता न करें। डेबिट की गई कोई भी राशि 4-7 दिनों के अंदर वापस आ जाएगी।
+            </p>
+            
+                    <div style="margin-top: auto; padding: 2rem 0; display: flex; justify-content: center;">
+    <input id="failure-retry-btn" onclick="retryPayment()" type="button" value="दोबारा कोशिश करें"
+        style="border: none; color: white; width: 92%; border-radius: 16px; height: 4rem;
+        font-size: 16px; background-color: #D92B90; font-weight: 700; padding: 1rem 0; box-shadow: none;" /></div>
+</div>
+
+        </div>
+    </div>
+    <div>
+        <div id="pending" class="" style="display: none;">
+            <div style="display: flex;padding:1.5rem; align-items: center; justify-content: space-between">
+                 <div style="display: flex; align-items: center;">
+                    <span style="width: 28px; height: 28px; border-radius: 8px; background: #D9008D; color: #fff; display: flex; align-items: center; justify-content: center; font-family: 'Noto Sans'; font-weight: 700; font-size: 16px; margin-right: 8px;">&infin;</span>
+                    <span style="font-family: 'Noto Sans'; font-weight: 700; font-size: 1.25rem; line-height: 1.75rem; letter-spacing: 0px; color: #D9008D;">Wiom</span>
+                </div>
+                <div style="display: flex; align-items: center;">
+                    <a id="help-text" href="tel:8880322222" class="help-text" style="margin-right: 1em; cursor: pointer; font-family: 'Noto Sans'; font-weight: 700; font-size: 0.875rem; line-height: 1.25rem; letter-spacing: 0px; text-align: center; color: #D9008D; text-decoration: none;">Help</a>
+                    <span class="material-icons" onclick="toggleLanguage()" style="cursor: pointer; color: #352D42; font-size: 24px;">translate</span>
+                </div>
+            </div>
+            <div style="margin-top: 40px"><img src="~/images/pending_image.svg" /></div>
+            <h2 id="pending-price" style="color: #1a1a1a; width: 90%; margin: 1rem auto">₹8</h2>
+            <div style="border: 0px solid #EAEAEA; padding: 1rem; display: inline-block; margin: 0px 16px 16px 16px; border-radius: 12px; padding: 0.6rem 1rem 0rem 0.2rem;">
+                <p id="pending-title2" style="color:#1a1a1a; font-size: 16px;margin-bottom:2rem; padding: 0 1.3rem">
+                    अरे! इसमें उम्मीद से ज्यादा समय लग रहा है। भुगतान सफल होते ही आप ∞ <strong>व्योम नेट</strong> से जुड़ जाएंगे ।
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Survey Popup -->
+    <div id="survey-popup" class="survey-overlay" style="display: none;">
+        <div class="survey-modal">
+            <div class="survey-slider"></div>
+            <div class="survey-content">
+                <div class="survey-icon">
+                    <div class="phone-illustration">
+                        <img src="/wiom-net-static/images/survey.svg" alt="Survey illustration" />
+                    </div>
+                </div>
+                <div class="survey-text">
+                    <h2 id="survey-title">व्योम अनुभव को और भी शानदार बनाने में हमारी मदद करें ❤️</h2>
+                </div>
+                <div class="survey-buttons">
+                    <button id="survey-feedback-btn" class="survey-btn-primary">अपनी राय दें</button>
+                    <button id="survey-close-btn" class="survey-btn-secondary">शायद बाद में</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var macId = window.macId || 'NA';  
+        var uniqueIdentifier = window.sessionStorage && window.sessionStorage.getItem("uniqueIdentifier") || '@mobile';
+        var surveyConfig = null; // Store survey config from API
+        var deployedOn = '@deployedOn'; // Get environment from server-side
+        
+        // Function to determine the API base URL based on environment
+        function getApiBaseUrl() {
+            // For production environment
+            if (deployedOn === 'prod') {
+                return 'https://api.wiomnet.in';
+            }
+            // For all other environments (QA, staging, dev, local)
+            return 'https://wiomnet.qa.i2e1.in';
+        }
+        
+        // Function to call GetConfig API
+        async function getSurveyUrl() {
+            try {
+                console.log('Calling GetConfig API...');
+                const apiBaseUrl = getApiBaseUrl();
+                const apiUrl = `${apiBaseUrl}/api/config/surveyUrl?lang=${currLang || 'hi'}`;
+                console.log('API URL:', apiUrl);
+                
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+                console.log('Config API response:', data);
+                
+                // Check if isActive is true and dataValue exists with a valid URL
+                if (data && data.isActive === true && data.dataValue && data.dataValue.trim().length > 0) {
+                    surveyConfig = {
+                        success: true,
+                        message: data.dataValue,
+                        id: data.id,
+                        isActive: data.isActive
+                    };
+                    console.log('Survey enabled - config loaded successfully');
+                    return true;
+                } else {
+                    console.log('Survey disabled - isActive is false or no valid dataValue');
+                    return false;
+                }
+            } catch (error) {
+                console.error('Error fetching config:', error);
+                return false;
+            }
+        }
+        
+        document.addEventListener("DOMContentLoaded", async function () {
+            // Call GetConfig API on page load
+            await getSurveyUrl();
+            
+            toggleLanguage(false);
+            lottie.loadAnimation({
+                container: document.getElementById('payment-loader-animation'),
+                renderer: 'svg',
+                loop: true,
+                autoplay: true,
+                path: '/Animations/payment_processing.json'  // <-- your loader animation path
+            });
+            let timerElement = document.getElementById('timer');
+            let timeLeft = 20;   
+            // Immediately show 00:20 when page loads
+            let minutes = Math.floor(timeLeft / 60);
+            let seconds = timeLeft % 60;
+            let timeFormatted = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            if (currLang === 'en') {
+                timerElement.innerText = `${timeFormatted} seconds`;
+            } else {
+                timerElement.innerText = `${timeFormatted} सेकंड`;
+            }
+
+
+            let timerInterval = setInterval(() => {
+                if (timeLeft > 0) {
+                    let minutes = Math.floor(timeLeft / 60);
+                    let seconds = timeLeft % 60;
+                    let timeFormatted = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                    
+                    if (currLang === 'en') {
+                        timerElement.innerText = `${timeFormatted} seconds`;
+                    } else {
+                        timerElement.innerText = `${timeFormatted} सेकंड्स`;
+                    }
+
+                    timeLeft--;
+                } else {
+                    clearInterval(timerInterval);
+                    if (currLang === 'en') {
+                        timerElement.innerText = `Checking status...`;
+                    } else {
+                        timerElement.innerText = `स्थिति जाँची जा रही है...`;
+                    }
+                }
+            }, 1000);   
+
+        });
+        if (window.localStorage && !window.localStorage.getItem("payment_app")) {
+            window.localStorage.setItem("payment_app", "qr");
+        }
+        function toggleLanguage(isRestart = true) {
+    if (isRestart)
+        currLang = (currLang === 'hi') ? 'en' : 'hi';
+    window.localStorage.setItem('currLanguage', currLang);
+
+    const pendingTitle = document.getElementById("pending-price");
+    const pleaseWait = document.getElementById("please-wait");
+    const pleaseWaitSubs = document.getElementById("please-wait-sub");
+    const cancelButton = document.getElementById("cancel-button");
+    const successTitle1 = document.getElementById("success-title1");
+    const successTitle2 = document.getElementById("success-title2");
+    const failureTitle1 = document.getElementById("failure-title1");
+    const failureTitle2 = document.getElementById("failure-title2");
+    const failureRetryBtn = document.getElementById("failure-retry-btn");
+    const pendingTitle2 = document.getElementById("pending-title2");
+    const hotspotCount = document.getElementById("hotspot_count");
+    const helpTexts = document.querySelectorAll(".help-text");
+    const tvBannerBadge = document.getElementById("tv-banner-badge");
+    const tvBannerTitle = document.getElementById("tv-banner-title");
+    const tvBannerRow1 = document.getElementById("tv-banner-row1");
+    const tvBannerRow2 = document.getElementById("tv-banner-row2");
+    const tvBannerCta = document.getElementById("tv-banner-cta");
+    const tvGenreEls = document.querySelectorAll(".tvb-tile .lbl");
+
+    helpTexts.forEach(helpText => {
+        helpText.innerText = currLang === "en" ? "Help" : "मदद";
+    });
+
+    if (currLang === "en") {
+        if (pleaseWait) pleaseWait.innerText = "Hold on";
+        if (pleaseWaitSubs) pleaseWaitSubs.innerText = "We are verifying your payment status";
+        if (cancelButton) cancelButton.innerHTML = "Do not press back button or close this <br> screen until the payment is complete";
+        if (successTitle1) successTitle1.innerText = "Payment Successful";
+        if (successTitle2) successTitle2.innerText = "Enjoy Unlimited Internet";
+        if (failureTitle1) failureTitle1.innerText = "Payment Failed";
+        if (failureTitle2) failureTitle2.innerText = "Don't worry! Any amount deducted will be refunded within 4-7 days";
+        if (failureRetryBtn) failureRetryBtn.value = "Try Again";
+        if (hotspotCount) hotspotCount.innerText = "Available at 1,50,000+ locations";
+        if (tvBannerBadge) tvBannerBadge.innerText = "NEW";
+        if (tvBannerTitle) tvBannerTitle.innerText = "75+ TV channels, on this phone";
+        if (tvBannerRow1) tvBannerRow1.innerText = "🎁 Free with your recharge";
+        if (tvBannerRow2) tvBannerRow2.innerText = "No app, no install";
+        if (tvBannerCta) tvBannerCta.innerText = "Watch Now →";
+        tvGenreEls.forEach(function (el, i) { el.innerText = ['News', 'Movies', 'Bhakti', 'Kids', 'Music', 'Sports'][i]; });
+
+        // If currently on pending screen, update content immediately
+        if (document.getElementById("pending").style.display === "block") {
+            const priceText = document.getElementById("pending-price").innerText;
+            const priceMatch = priceText.match(/₹\d+/);
+            if (priceMatch) document.getElementById("pending-price").innerText = `${priceMatch[0]} recharge is in process!`;
+            if (pendingTitle2) pendingTitle2.innerHTML = `Oops! This is taking longer than expected. You will be automatically connected to ∞ <strong>Wiom Net</strong> once the payment is successful.`;
+        }
+    } else {
+        if (pleaseWait) pleaseWait.innerText = "धैर्य रखें";
+        if (pleaseWaitSubs) pleaseWaitSubs.innerText = "भुगतान की स्थिति जाँची जा रही है";
+        if (cancelButton) cancelButton.innerHTML = "भुगतान पूरा होने तक बैक बटन न दबाएँ <br>एवं इस स्क्रीन को बंद न करें";
+        if (successTitle1) successTitle1.innerText = "भुगतान सफल हुआ!";
+        if (successTitle2) successTitle2.innerText = "अनलिमिटेड इंटरनेट का आनंद लें";
+        if (failureTitle1) failureTitle1.innerText = "भुगतान असफल रहा";
+        if (failureTitle2) failureTitle2.innerText = "चिंता न करें। डेबिट की गई कोई भी राशि 4-7 दिनों के अंदर वापस आ जाएगी।";
+        if (failureRetryBtn) failureRetryBtn.value = "दोबारा प्रयास करें";
+        if (hotspotCount) hotspotCount.innerText = "1,50,000+ लोकेशन पर उपलब्ध";
+        if (tvBannerBadge) tvBannerBadge.innerText = "नया";
+        if (tvBannerTitle) tvBannerTitle.innerText = "75+ TV चैनल, इसी फोन पर";
+        if (tvBannerRow1) tvBannerRow1.innerText = "🎁 आपके रिचार्ज के साथ बिल्कुल फ्री";
+        if (tvBannerRow2) tvBannerRow2.innerText = "बिना ऐप, बिना इंस्टॉल";
+        if (tvBannerCta) tvBannerCta.innerText = "अभी देखें →";
+        tvGenreEls.forEach(function (el, i) { el.innerText = ['न्यूज़', 'मूवीज़', 'भक्ति', 'कार्टून', 'म्यूज़िक', 'स्पोर्ट्स'][i]; });
+
+        // If currently on pending screen, update content immediately
+        if (document.getElementById("pending").style.display === "block") {
+            const priceText = document.getElementById("pending-price").innerText;
+            const priceMatch = priceText.match(/₹\d+/);
+            if (priceMatch) document.getElementById("pending-price").innerText = `${priceMatch[0]} का भुगतान अभी प्रक्रिया में है! `;
+            if (pendingTitle2) pendingTitle2.innerHTML = `अरे! इसमें उम्मीद से ज्यादा समय लग रहा है। भुगतान सफल होते ही आप ∞ <strong>व्योम नेट</strong> से जुड़ जाएंगे ।`;
+        }
+    }
+}
+
+        function handleLanguageChange(select) {
+            const selectedOption = select.value;
+            currLang = selectedOption;
+            window.localStorage.setItem('currLanguage', currLang);
+         
+            if (currLang == "en") {
+                pendingTitle.innerText = "Payment is in process...";
+                successTitle1.innerText = "Payment Successful";
+                successTitle2.innerText = "Enjoy Unlimited Internet";
+                failureTitle1.innerText = "Payment Failed";
+                failureTitle2.innerText = "Don't worry! Any amount deducted will be refunded within 4-7 days";
+                failureRetryBtn.value = "Try Again";
+                pendingTitle1.innerText = "Processing Payment";
+                pendingTitle2.innerHTML = "Oops! This is taking longer than expected. You will be automatically connected to ∞ <strong>Wiom Net</strong> once the payment is successful..";
+                hotspotCount.innerText = "1,50,000+ hotspots available";
+            }
+            else {
+                pendingTitle.innerText = "आपकी पेमेंट प्रक्रिया में है...";
+                successTitle1.innerText = "भुगतान सफल हुआ!";
+                successTitle2.innerText = "अनलिमिटेड इंटरनेट का आनंद लें";
+                failureTitle1.innerText = "भुगतान असफल रहा";
+                failureTitle2.innerText = "चिंता न करें। डेबिट की गई कोई भी राशि 4-7 दिनों के अंदर वापस आ जाएगी।";
+                failureRetryBtn.value = "दोबारा प्रयास करें";
+                pendingTitle1.innerText = "भुगतान की प्रक्रिया जारी है!";
+                pendingTitle2.innerHTML = "अरे! इसमें उम्मीद से ज्यादा समय लग रहा है। भुगतान सफल होते ही आप ∞ <strong>व्योम नेट</strong> से जुड़ जाएंगे ।";
+                hotspotCount.innerText = "1,50,000+ लोकेशन पर उपलब्ध";
+            }
+        }
+
+        var loaderCount = 30;
+        var loaderMaxCount = 330;
+        var totaltime = 120;
+        var callApiTimer = 2;
+        function callAppFunction(methodName, methodData) {
+            var functionString = "Android." + methodName;
+            if (eval("typeof Android") != "undefined" && eval("typeof " + functionString) != "undefined") {
+                console.log("available");
+                var funcString = 'Android.' + methodName + '(';
+                for (var i = 0; i < methodData.length; ++i) {
+                    if (typeof methodData[i] == 'string')
+                        funcString += "'" + methodData[i] + "'";
+                    else
+                        funcString += methodData[i];
+
+                    if (i != methodData.length - 1)
+                        funcString += ",";
+                }
+                console.log(funcString);
+                eval(funcString + ")");
+                return true;
+            }
+
+            console.log("notavailable");
+            return false;
+        }
+        var result = {};
+        var mainDiv = document.getElementById("demo");
+        // TESTVIEW: payment polling disabled
+
+        function notifyUserUsingTopic(status) {
+            let topic = window.localStorage && window.localStorage.getItem('mqttTopic');
+            if (topic == null || topic.length == 0) {
+                topic = "@ViewBag.mobile";
+            }
+            const paymentStatus = {
+                "status": status
+            };
+            console.log("status: ",paymentStatus);
+                let loginDomain = '@loginDomain';
+                fetch(`${loginDomain}/WiomNet/Login/SendPaymentConfirmationNotification`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                body: JSON.stringify({ topic: topic, paymentStatus: paymentStatus })
+                })
+                    .then(res => res.json())
+                    .then((result) => {
+                        return result;
+                    })
+                    .catch((err) => {
+                        console.error(err);
+                    });
+        }
+
+
+        function loaderProcess(startLoaderCount, endLoaderCount, maxTimer) {
+            var loadTime = 100;
+            var incremetLoader = (endLoaderCount - startLoaderCount) / (maxTimer / loadTime);
+            var x = setInterval(() => {
+                startLoaderCount += incremetLoader;
+                if (startLoaderCount >= endLoaderCount) {
+                    clearInterval(x);
+                    document.getElementById("circle").style["stroke-dashoffset"] = endLoaderCount + "px";
+                }
+                else {
+                    document.getElementById("circle").style["stroke-dashoffset"] = startLoaderCount + "px";
+                }
+            }, loadTime);
+        }
+
+        async function getPaymentResult() {
+            var i = 0;
+            var padding = 30;
+            var no_of_loop = 10;
+            var unitFillLoader = (loaderMaxCount - loaderCount) / no_of_loop;
+            var paymentData, plandata;
+            var paymentResponse = function() {
+                let paymentstatus = document.getElementById("success").style.display;
+                if (paymentstatus == "block")
+                    return;
+                try {
+                    var resHandler = function (response) {
+                        console.log(response);
+                        var status = response.data.status;
+                        plandata = response.data.plan;
+                        paymentData = response.data.paymentData;
+
+                        if (status != "pending" && status != "still_processing") {
+                            let pendingDiv = document.getElementById("pending");
+                            pendingDiv.style.display = "none";
+                            if ('@ViewBag.planType' == 4) {
+                                let res = notifyUserUsingTopic(status);
+                                console.log("notifyUserUsingTopic: response: ", res);
+                            }
+                            setResult(status, plandata, paymentData);
+                        }
+                        else{
+                            if (no_of_loop > 0)
+                                setTimeout(paymentResponse, 1000);
+                            else
+                                setResult("pending", plandata, paymentData);
+                        }
+                    }
+
+                    fetch(`@loginDomain/WiomNet/Payment/CheckPaymentStatus?transactionId=@Html.Raw(ViewBag.transactionId)&planType=@ViewBag.planType&pg=@ViewBag.pg` + "&" + Math.random())
+                        .then(res => res.json())
+                        .then((result) => {
+                            resHandler(result)
+                        })
+                        .catch((err) => {
+                            resHandler({ status: 1, msg: "network failue", data: {} })
+                        })
+                }
+                catch (err) {
+                    console.error(`Caught Exception in displaying payment completed page: ${err}`);
+                }
+                no_of_loop--;
+            }
+            setTimeout(paymentResponse, 1000);
+        }
+        async function setResult(result, plan, paymentData) {
+            var obj = {};
+            if (paymentData)
+                obj = paymentData;
+
+            if (obj.return_url) {
+                let url = obj.return_url;
+                if (url.indexOf('?') == -1)
+                    obj.return_url = obj.return_url + '?';
+                window.location.href = obj.return_url + "&status=" + paymentData.p_status
+                    + "&finalPrice=" + (paymentData.unit_price - paymentData.discount)
+                    + "&deviceId=" + paymentData.nasid
+                    + "&planStart=" + obj.plan_start_time
+                    + "&validity=" + obj.time_limit
+                    + "&web_link=" + obj.web_link;
+            }
+            else {
+                document.getElementById("loader").style.display = "none";
+                var app = window.localStorage && window.localStorage.getItem("payment_app");
+                var wifi = window.localStorage && window.localStorage.getItem("wifi");
+
+                if (result == "success") {
+                    if ('@ViewBag.planType' == 4) {
+                        logger('welcome_ss', { app: app, wifi: wifi, amount: paymentData.payableAmount });
+                    }
+                    document.getElementById("success").style.display = "block";
+
+                    // phase 2: compress success into a strip, reveal Wiom TV
+                    setTimeout(() => {
+                        enterTvMode();
+                        logger('tv_banner_ss', { app: app, language: currLang || 'hi' });
+                    }, 2200);
+                    
+                    // Show survey popup after 3 seconds delay
+                    setTimeout(() => {
+                        showSurveyPopup();
+                    }, 6000); // delayed (was 3000) so the survey does not cover the TV banner reveal
+                    
+                    // 🎯 Now load SUCCESS animation here
+                    lottie.loadAnimation({
+                        container: document.getElementById('success-image'),
+                        renderer: 'svg',
+                        loop: false,
+                        autoplay: true,
+                        path: '/Animations/greensuccess.json'
+                        });
+                }
+                else if (result == "pending" || result == "still_processing") {
+                    if (currLang == "en") {
+        document.getElementById('pending-price').innerText = `₹${paymentData.payableAmount} recharge is in process!`;
+        document.getElementById('pending-title2').innerHTML = `Oops! This is taking longer than usual. You will be notified once done.`;
+    } else {
+        document.getElementById('pending-price').innerText = `₹${paymentData.payableAmount} का भुगतान अभी प्रक्रिया में है! `;
+        document.getElementById('pending-title2').innerHTML = `अरे! इसमें उम्मीद से ज्यादा समय लग रहा है। भुगतान सफल होते ही आप ∞ <strong>व्योम नेट</strong> से जुड़ जाएंगे ।`;
+    }
+
+                    document.getElementById("pending").style.display = "block";
+
+                    // 🎯 Now load PENDING animation here
+                    lottie.loadAnimation({
+                        container: document.getElementById('pending-animation'),
+                        renderer: 'svg',
+                        loop: true,
+                        autoplay: true,
+                        path: '/Animations/payment_pending.json'
+                    });
+
+                    logger('payment_pending_ss', { app: app, amount: paymentData.payableAmount });
+                }
+                else {
+                    document.getElementById("failure").style.display = "block";
+
+                    // 🎯 Now load FAILURE animation here
+                    lottie.loadAnimation({
+                        container: document.getElementById('failure-animation'),
+                        renderer: 'svg',
+                        loop: false,
+                        autoplay: true,
+                        path: '/Animations/payment_failed.json'
+                    });
+
+                    logger('payment_failed_ss', { app: app, amount: paymentData.payableAmount });
+                }
+            }
+        }
+        function retryPayment() {
+            logger('retry_payment_click');
+            window.location.href = "@Html.Raw(@ViewBag.paymentWebLink)"
+        }
+        function logTvBannerClick() {
+            logger('tv_banner_click', { language: currLang || 'hi' });
+        }
+
+        function enterTvMode() {
+            var success = document.getElementById("success");
+            var payss = document.getElementById("pay_ss");
+            var banner = document.getElementById("tv-banner");
+            if (!success || !banner) return;
+
+            // 1) squeeze: tick + headlines condense in place (CSS transitions in .tv-mode);
+            //    skyline squeezes shut from its measured pixel height
+            success.classList.add("tv-mode");
+            if (payss) {
+                payss.style.height = payss.scrollHeight + "px";
+                payss.style.overflow = "hidden";
+                void payss.offsetHeight; // commit the start height before animating
+                payss.style.transition = "height .9s ease, opacity .9s ease";
+                payss.style.height = "0px";
+                payss.style.opacity = "0";
+            }
+
+            // 2) once squeezed, the TV card fades into the freed space
+            //    (nothing sits below it, so entering the layout shifts nothing)
+            setTimeout(function () {
+                if (payss) payss.style.display = "none";
+                banner.classList.add("show");
+                requestAnimationFrame(function () {
+                    requestAnimationFrame(function () {
+                        banner.classList.add("visible");
+                    });
+                });
+            }, 950);
+        }
+        let newFlow = window.sessionStorage.getItem("newFlow");
+        var logger = getLogger({
+            mobile: '@ViewBag.mobile',
+            plan_id: '@planId',
+            uniqueIdentifier: uniqueIdentifier,
+            flow :  newFlow? "CCP_on_CP" : ""
+        });
+        const getDeviceType = () => {
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            // Check for Android
+            if (/android/i.test(userAgent)) {
+                return "android";
+            }
+            // Check for iOS
+            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                return "ios";
+            }
+            // Default to web
+            return "web";
+        }
+
+
+        // Survey Popup Functions
+        function showSurveyPopup() {
+            console.log('showSurveyPopup called, surveyConfig:', surveyConfig);
+            
+            // Check if survey is enabled via config and isActive is true
+            if (!surveyConfig || !surveyConfig.success || !surveyConfig.isActive) {
+                console.log('Survey popup disabled - config check failed', { 
+                    hasConfig: !!surveyConfig, 
+                    success: surveyConfig?.success,
+                    isActive: surveyConfig?.isActive
+                });
+                return;
+            }
+            
+            console.log('Survey popup enabled - showing popup');
+            
+            const surveyPopup = document.getElementById('survey-popup');
+            const surveyModal = document.querySelector('.survey-modal');
+            
+            if (surveyPopup && surveyModal) {
+                // Remove closing class if it exists
+                surveyModal.classList.remove('closing');
+                surveyPopup.style.display = 'flex';
+                updateSurveyLanguage();
+                
+                // Add event listeners (remove existing ones first to avoid duplicates)
+                const feedbackBtn = document.getElementById('survey-feedback-btn');
+                const closeBtn = document.getElementById('survey-close-btn');
+                
+                if (feedbackBtn) {
+                    feedbackBtn.removeEventListener('click', handleSurveyFeedback);
+                    feedbackBtn.addEventListener('click', handleSurveyFeedback);
+                }
+                
+                if (closeBtn) {
+                    closeBtn.removeEventListener('click', closeSurveyPopup);
+                    closeBtn.addEventListener('click', closeSurveyPopup);
+                }
+                
+                // Close on overlay click
+                surveyPopup.addEventListener('click', function(e) {
+                    if (e.target === surveyPopup) {
+                        closeSurveyPopup();
+                    }
+                });
+
+                // Add slider drag functionality
+                initializeSurveySlider(surveyModal);
+            }
+        }
+
+        // Survey Slider Drag Functionality
+        function initializeSurveySlider(modal) {
+            let startY = 0;
+            let currentY = 0;
+            let isDragging = false;
+            let startTime = 0;
+            const threshold = 100; // minimum distance to close
+            const velocityThreshold = 0.5; // minimum velocity to close
+            
+            function handleStart(e) {
+                isDragging = true;
+                startTime = Date.now();
+                startY = e.type === 'touchstart' ? e.touches[0].clientY : e.clientY;
+                currentY = startY;
+                modal.style.transition = 'none';
+            }
+            
+            function handleMove(e) {
+                if (!isDragging) return;
+                
+                e.preventDefault();
+                currentY = e.type === 'touchmove' ? e.touches[0].clientY : e.clientY;
+                const deltaY = currentY - startY;
+                
+                // Only allow downward drag
+                if (deltaY > 0) {
+                    const opacity = Math.max(0.3, 1 - (deltaY / 300));
+                    modal.style.transform = `translateY(${deltaY}px)`;
+                    modal.style.opacity = opacity;
+                }
+            }
+            
+            function handleEnd(e) {
+                if (!isDragging) return;
+                
+                isDragging = false;
+                const deltaY = currentY - startY;
+                const deltaTime = Date.now() - startTime;
+                const velocity = Math.abs(deltaY) / deltaTime;
+                
+                modal.style.transition = 'transform 0.3s ease-out, opacity 0.3s ease-out';
+                
+                // Close if dragged down enough or with enough velocity
+                if (deltaY > threshold || velocity > velocityThreshold) {
+                    closeSurveyPopup();
+                } else {
+                    // Snap back to original position
+                    modal.style.transform = 'translateY(0)';
+                    modal.style.opacity = '1';
+                }
+            }
+            
+            // Touch events for mobile
+            modal.addEventListener('touchstart', handleStart, { passive: false });
+            document.addEventListener('touchmove', handleMove, { passive: false });
+            document.addEventListener('touchend', handleEnd);
+            
+            // Mouse events for desktop
+            modal.addEventListener('mousedown', handleStart);
+            document.addEventListener('mousemove', handleMove);
+            document.addEventListener('mouseup', handleEnd);
+            
+            // Clean up function to remove event listeners
+            modal._cleanupSlider = function() {
+                modal.removeEventListener('touchstart', handleStart);
+                document.removeEventListener('touchmove', handleMove);
+                document.removeEventListener('touchend', handleEnd);
+                modal.removeEventListener('mousedown', handleStart);
+                document.removeEventListener('mousemove', handleMove);
+                document.removeEventListener('mouseup', handleEnd);
+            };
+        }
+
+        function closeSurveyPopup() {
+            const surveyPopup = document.getElementById('survey-popup');
+            const surveyModal = document.querySelector('.survey-modal');
+            
+            if (surveyPopup && surveyModal) {
+                // Clean up slider event listeners
+                if (surveyModal._cleanupSlider) {
+                    surveyModal._cleanupSlider();
+                    delete surveyModal._cleanupSlider;
+                }
+                
+                // Reset modal styles
+                surveyModal.style.transform = '';
+                surveyModal.style.opacity = '';
+                surveyModal.style.transition = '';
+                
+                // Add closing animation class
+                surveyModal.classList.add('closing');
+                
+                // Hide the popup after animation completes
+                setTimeout(() => {
+                    surveyPopup.style.display = 'none';
+                    surveyModal.classList.remove('closing');
+                }, 300);
+            }
+        }
+
+        function handleSurveyFeedback() {
+            // Log the feedback click event
+            logger('survey_feedback_clicked', { 
+                mobile: '@ViewBag.mobile',
+                uniqueIdentifier: uniqueIdentifier,
+                language: currLang || 'hi'
+            });
+            
+            // Close the popup first
+            closeSurveyPopup();
+            
+            // Open the feedback URL from the API response
+            if (surveyConfig && surveyConfig.message) {
+                console.log('Opening feedback URL:', surveyConfig.message);
+                window.open(surveyConfig.message, '_blank');
+            } else {
+                // Fallback if no URL is provided
+                console.log('No feedback URL provided in config');
+                alert(currLang === 'en' ? 'Thank you for your interest in providing feedback!' : 'फीडबैक देने में रुचि दिखाने के लिए धन्यवाद!');
+            }
+        }
+
+        function updateSurveyLanguage() {
+            const surveyTitle = document.getElementById('survey-title');
+            const feedbackBtn = document.getElementById('survey-feedback-btn');
+            const closeBtn = document.getElementById('survey-close-btn');
+            
+            if (currLang === 'en') {
+                if (surveyTitle) surveyTitle.textContent = 'Help us make your Wiom experience even better ❤️';
+                if (feedbackBtn) feedbackBtn.textContent = 'Share Feedback';
+                if (closeBtn) closeBtn.textContent = 'Maybe Later';
+            } else {
+                if (surveyTitle) surveyTitle.textContent = 'व्योम अनुभव को और भी शानदार बनाने में हमारी मदद करें ❤️';
+                if (feedbackBtn) feedbackBtn.textContent = 'अपनी राय दें';
+                if (closeBtn) closeBtn.textContent = 'शायद बाद में';
+            }
+        }
+    </script>
+    <script>
+        // TESTVIEW ONLY — replays the real enterTvMode() squeeze choreography
+        function demoReset() {
+            var s = document.getElementById('success'), p = document.getElementById('pay_ss'),
+                b = document.getElementById('tv-banner');
+            s.classList.remove('tv-mode');
+            b.classList.remove('show');
+            b.classList.remove('visible');
+            if (p) { p.style.transition = 'none'; p.style.display = 'block'; p.style.opacity = '1'; p.style.height = ''; p.style.overflow = ''; }
+        }
+        function demoRun() { demoReset(); setTimeout(enterTvMode, 2200); }
+        window.addEventListener('load', demoRun);
+    </script>
+    <div style="position:fixed;bottom:14px;right:14px;z-index:99999;">
+        <button onclick="demoRun()" style="background:#161021;color:#fff;border:none;border-radius:9999px;padding:10px 18px;font-weight:700;cursor:pointer;">&#8635; Replay transition</button>
+    </div>
+</body>
+</html>
