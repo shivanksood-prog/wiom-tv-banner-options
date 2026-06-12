@@ -68,14 +68,15 @@
     /* ============ B″ — explanatory, mini phone grid ============ */
     .bB { display: block; width: 90%; margin: 8px auto 16px auto; box-sizing: border-box; background: #fff; border: 1px solid #FFB2E4; border-radius: 20px; padding: 16px; text-decoration: none; }
     .bB:active { background: #FFE5F6; }
-    .bB-head { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
+    .bB-head { display: flex; align-items: center; gap: 14px; }
     .bB-head .ph-port { flex: 0 0 96px; }
-    .bB-new { display: inline-block; background: #D9008D; color: #fff; font-size: 11px; font-weight: 700; padding: 2px 10px; border-radius: 9999px; margin-bottom: 6px; }
-    .bB-title { color: #161021; font-size: 18px; font-weight: 700; line-height: 25px; }
-    .bB-rows { display: flex; flex-direction: column; gap: 8px; }
-    .bB-row { display: flex; align-items: center; gap: 10px; color: #161021; font-size: 14px; line-height: 20px; }
-    .bB-row .material-icons { color: #008043; font-size: 20px; }
-    .bB-rowfree { background: #E1FAED; border-radius: 10px; padding: 8px 10px; color: #008043; font-weight: 700; }
+    .bB-right { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 8px; }
+    .bB-new { display: inline-block; align-self: flex-start; background: #D9008D; color: #fff; font-size: 11px; font-weight: 700; padding: 2px 10px; border-radius: 9999px; }
+    .bB-title { color: #161021; font-size: 17px; font-weight: 700; line-height: 23px; }
+    .bB-rows { display: flex; flex-direction: column; gap: 7px; }
+    .bB-row { display: flex; align-items: center; gap: 8px; color: #161021; font-size: 12.5px; line-height: 17px; }
+    .bB-row .material-icons { color: #008043; font-size: 17px; }
+    .bB-rowfree { background: #E1FAED; border-radius: 10px; padding: 6px 8px; color: #008043; font-weight: 700; }
 
     /* ============ C″ — reward framing, play icon ============ */
     .bC { display: block; width: 90%; margin: 8px auto 16px auto; box-sizing: border-box; background: #FFE5F6; border-radius: 20px; padding: 16px; text-decoration: none; position: relative; }
@@ -121,66 +122,11 @@
 <body>
 <div class="wrap">
     <h1>Wiom TV Banner — Options v3</h1>
-    <div class="note">Graphics rule changed: <b>no television sets</b> — the experience is TV but it plays on the phone, so visuals are phones + play buttons. Copy keeps the word "TV".</div>
+    <div class="note">Ranked C &gt; F &gt; D &gt; E &gt; B &gt; A. No television sets in graphics — the experience is TV but it plays on the phone, so visuals are phones + play buttons. Copy keeps the word "TV".</div>
     <div class="crit"><b>Judged on:</b> ① क्या ग्राहक समझेगा कि फोन पर TV जैसा अनुभव मिलेगा? ② क्या उसे दिखेगा <i>और</i> भरोसा होगा कि यह फ्री है?</div>
 
-    <!-- ============ A" ============ -->
-    <div class="variant-label">A″ — Dark cinematic: phone playing LIVE</div>
-    <p class="variant-desc"><b>Graphic:</b> landscape phone (selfie camera dot) playing a LIVE news channel. Headline says the proposition outright: फोन ही बना TV. ① video-on-phone is unmistakable &nbsp;② फ्री ×3 (gold badge, sub, CTA).</p>
-    <div class="ctx">
-        <div class="ctx-head"><div class="tickrow">✔</div>भुगतान सफल हुआ!</div>
-        <a class="bA" href="https://satyam.wiom.in/tv" target="_blank" rel="noopener">
-            <div class="toprow">
-                <span class="live"><span class="dot"></span>LIVE TV</span>
-                <span class="goldfree">100% फ्री</span>
-            </div>
-            <div class="ph-land">
-                <div class="screen">
-                    <div class="vidscreen">
-                        <div class="playbtn"><span class="material-icons">play_arrow</span></div>
-                        <div class="vidbar"><span>📰 न्यूज़ चैनल</span><span>LIVE</span></div>
-                    </div>
-                </div>
-            </div>
-            <div class="bA-title">आपका फोन, अब आपका TV</div>
-            <div class="bA-sub">75+ TV चैनल इसी फोन पर — कोई ऐप नहीं, कोई चार्ज नहीं</div>
-            <div class="cta">अभी फ्री में देखें →</div>
-        </a>
-    </div>
-
-    <!-- ============ B" ============ -->
-    <div class="variant-label">B″ — Explanatory: phone with channel grid</div>
-    <p class="variant-desc"><b>Graphic:</b> portrait phone (punch-hole) showing the channel grid — exactly what they'll see after tapping. ① literal product preview &nbsp;② फ्री owns the card via green row.</p>
-    <div class="ctx">
-        <div class="ctx-head"><div class="tickrow">✔</div>भुगतान सफल हुआ!</div>
-        <a class="bB" href="https://satyam.wiom.in/tv" target="_blank" rel="noopener">
-            <div class="bB-head">
-                <div class="ph-port">
-                    <div class="tiles two">
-                        <div class="tile t1"><span class="em">📰</span>न्यूज़</div>
-                        <div class="tile t2"><span class="em">🎬</span>मूवीज़</div>
-                        <div class="tile t3"><span class="em">🙏</span>भक्ति</div>
-                        <div class="tile t4"><span class="em">🧒</span>कार्टून</div>
-                        <div class="tile t2"><span class="em">🎵</span>म्यूज़िक</div>
-                        <div class="tile t1"><span class="em">🏏</span>स्पोर्ट्स</div>
-                    </div>
-                </div>
-                <div>
-                    <span class="bB-new">नया</span>
-                    <div class="bB-title">75+ TV चैनल — अब फोन पर</div>
-                </div>
-            </div>
-            <div class="bB-rows">
-                <div class="bB-row bB-rowfree"><span class="material-icons">check_circle</span>बिल्कुल फ्री — कोई चार्ज नहीं</div>
-                <div class="bB-row"><span class="material-icons">check_circle</span>न्यूज़, मूवीज़, भक्ति, कार्टून — सब LIVE</div>
-                <div class="bB-row"><span class="material-icons">check_circle</span>इसी फोन पर चलाएं, बिना ऐप</div>
-            </div>
-            <div class="cta">फ्री में देखना शुरू करें</div>
-        </a>
-    </div>
-
     <!-- ============ C" ============ -->
-    <div class="variant-label">C″ — Reward framing: play icon</div>
+    <div class="variant-label">#1 · C″ — Reward framing: play icon</div>
     <p class="variant-desc"><b>Graphic:</b> TV icon → solid pink play button (the universal "video will play" symbol). ① play + चैनल carries it &nbsp;② best believability: फ्री tied to the recharge.</p>
     <div class="ctx">
         <div class="ctx-head"><div class="tickrow">✔</div>भुगतान सफल हुआ!</div>
@@ -199,8 +145,31 @@
         </a>
     </div>
 
+    <!-- ============ F ============ -->
+    <div class="variant-label">#2 · F — Channel ticker</div>
+    <p class="variant-desc"><b>Graphic:</b> scrolling channel parade = abundance + the page's only motion. Headline updated to फोन framing; CTA gets ▶. ① चैनल parade &nbsp;② gold badge + CTA.</p>
+    <div class="ctx">
+        <div class="ctx-head"><div class="tickrow">✔</div>भुगतान सफल हुआ!</div>
+        <a class="bF" href="https://satyam.wiom.in/tv" target="_blank" rel="noopener">
+            <div class="bF-inner">
+                <div class="toprow">
+                    <span class="live"><span class="dot"></span>LIVE TV</span>
+                    <span class="goldfree">100% फ्री</span>
+                </div>
+                <div class="bF-title">75+ TV चैनल, अब फोन पर</div>
+                <div class="bF-sub">इसी फोन पर देखें — कोई ऐप नहीं</div>
+            </div>
+            <div class="ticker">
+                <div class="ticker-track">
+                    <span class="tk t1">📰 न्यूज़</span><span class="tk t2">🎬 मूवीज़</span><span class="tk t3">🙏 भक्ति</span><span class="tk t4">🧒 कार्टून</span><span class="tk t2">🎵 म्यूज़िक</span><span class="tk t1">🏏 स्पोर्ट्स</span><span class="tk t4">😂 कॉमेडी</span><span class="tk t3">🍳 लाइफस्टाइल</span>
+                    <span class="tk t1">📰 न्यूज़</span><span class="tk t2">🎬 मूवीज़</span><span class="tk t3">🙏 भक्ति</span><span class="tk t4">🧒 कार्टून</span><span class="tk t2">🎵 म्यूज़िक</span><span class="tk t1">🏏 स्पोर्ट्स</span><span class="tk t4">😂 कॉमेडी</span><span class="tk t3">🍳 लाइफस्टाइल</span>
+                </div>
+            </div>
+            <div class="bF-inner"><div class="cta">▶ अभी फ्री में देखें</div></div>
+        </a>
+    </div>
     <!-- ============ D" ============ -->
-    <div class="variant-label">D″ — Hybrid: phone grid + gold फ्री + gift line</div>
+    <div class="variant-label">#3 · D″ — Hybrid: phone grid + gold फ्री + gift line</div>
     <p class="variant-desc"><b>Graphic:</b> landscape phone (19:9) showing the Wiom TV app UI — header + channel grid + "75+ चैनल" tile. Gold badge = फ्री <i>seen</i>; gift line = फ्री <i>believed</i>; चैनल headline = TV <i>named</i>.</p>
     <div class="ctx">
         <div class="ctx-head"><div class="tickrow">✔</div>भुगतान सफल हुआ!</div>
@@ -231,7 +200,7 @@
     </div>
 
     <!-- ============ E" ============ -->
-    <div class="variant-label">E″ — "Now Playing" on the phone</div>
+    <div class="variant-label">#4 · E″ — "Now Playing" on the phone</div>
     <p class="variant-desc"><b>Graphic:</b> phone mid-playback (▶ + LIVE bar) — video-thumbnail instinct: people tap play buttons. CTA is an action ("चलाएं"), not an offer. ① strongest tap-trigger &nbsp;② gift line + फ्री in sub.</p>
     <div class="ctx">
         <div class="ctx-head"><div class="tickrow">✔</div>भुगतान सफल हुआ!</div>
@@ -250,29 +219,61 @@
         </a>
     </div>
 
-    <!-- ============ F ============ -->
-    <div class="variant-label">F — Channel ticker (unchanged graphic — never had a TV)</div>
-    <p class="variant-desc"><b>Graphic:</b> scrolling channel parade = abundance + the page's only motion. Headline updated to फोन framing; CTA gets ▶. ① चैनल parade &nbsp;② gold badge + CTA.</p>
+    <!-- ============ B" ============ -->
+    <div class="variant-label">#5 · B″ — Explanatory: phone with channel grid</div>
+    <p class="variant-desc"><b>Graphic:</b> portrait phone (punch-hole) showing the channel grid — exactly what they'll see after tapping. ① literal product preview &nbsp;② फ्री owns the card via green row.</p>
     <div class="ctx">
         <div class="ctx-head"><div class="tickrow">✔</div>भुगतान सफल हुआ!</div>
-        <a class="bF" href="https://satyam.wiom.in/tv" target="_blank" rel="noopener">
-            <div class="bF-inner">
-                <div class="toprow">
-                    <span class="live"><span class="dot"></span>LIVE TV</span>
-                    <span class="goldfree">100% फ्री</span>
+        <a class="bB" href="https://satyam.wiom.in/tv" target="_blank" rel="noopener">
+            <div class="bB-head">
+                <div class="ph-port">
+                    <div class="tiles two">
+                        <div class="tile t1"><span class="em">📰</span>न्यूज़</div>
+                        <div class="tile t2"><span class="em">🎬</span>मूवीज़</div>
+                        <div class="tile t3"><span class="em">🙏</span>भक्ति</div>
+                        <div class="tile t4"><span class="em">🧒</span>कार्टून</div>
+                        <div class="tile t2"><span class="em">🎵</span>म्यूज़िक</div>
+                        <div class="tile t1"><span class="em">🏏</span>स्पोर्ट्स</div>
+                    </div>
                 </div>
-                <div class="bF-title">75+ TV चैनल, अब फोन पर</div>
-                <div class="bF-sub">इसी फोन पर देखें — कोई ऐप नहीं</div>
-            </div>
-            <div class="ticker">
-                <div class="ticker-track">
-                    <span class="tk t1">📰 न्यूज़</span><span class="tk t2">🎬 मूवीज़</span><span class="tk t3">🙏 भक्ति</span><span class="tk t4">🧒 कार्टून</span><span class="tk t2">🎵 म्यूज़िक</span><span class="tk t1">🏏 स्पोर्ट्स</span><span class="tk t4">😂 कॉमेडी</span><span class="tk t3">🍳 लाइफस्टाइल</span>
-                    <span class="tk t1">📰 न्यूज़</span><span class="tk t2">🎬 मूवीज़</span><span class="tk t3">🙏 भक्ति</span><span class="tk t4">🧒 कार्टून</span><span class="tk t2">🎵 म्यूज़िक</span><span class="tk t1">🏏 स्पोर्ट्स</span><span class="tk t4">😂 कॉमेडी</span><span class="tk t3">🍳 लाइफस्टाइल</span>
+                <div class="bB-right">
+                    <span class="bB-new">नया</span>
+                    <div class="bB-title">75+ TV चैनल — अब फोन पर</div>
+                    <div class="bB-rows">
+                        <div class="bB-row bB-rowfree"><span class="material-icons">check_circle</span>बिल्कुल फ्री — कोई चार्ज नहीं</div>
+                        <div class="bB-row"><span class="material-icons">check_circle</span>न्यूज़, मूवीज़, भक्ति — सब LIVE</div>
+                        <div class="bB-row"><span class="material-icons">check_circle</span>इसी फोन पर, बिना ऐप</div>
+                    </div>
                 </div>
             </div>
-            <div class="bF-inner"><div class="cta">▶ अभी फ्री में देखें</div></div>
+            <div class="cta">फ्री में देखना शुरू करें</div>
         </a>
     </div>
+
+    <!-- ============ A" ============ -->
+    <div class="variant-label">#6 · A″ — Dark cinematic: phone playing LIVE</div>
+    <p class="variant-desc"><b>Graphic:</b> landscape phone (selfie camera dot) playing a LIVE news channel. Headline says the proposition outright: फोन ही बना TV. ① video-on-phone is unmistakable &nbsp;② फ्री ×3 (gold badge, sub, CTA).</p>
+    <div class="ctx">
+        <div class="ctx-head"><div class="tickrow">✔</div>भुगतान सफल हुआ!</div>
+        <a class="bA" href="https://satyam.wiom.in/tv" target="_blank" rel="noopener">
+            <div class="toprow">
+                <span class="live"><span class="dot"></span>LIVE TV</span>
+                <span class="goldfree">100% फ्री</span>
+            </div>
+            <div class="ph-land">
+                <div class="screen">
+                    <div class="vidscreen">
+                        <div class="playbtn"><span class="material-icons">play_arrow</span></div>
+                        <div class="vidbar"><span>📰 न्यूज़ चैनल</span><span>LIVE</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="bA-title">आपका फोन, अब आपका TV</div>
+            <div class="bA-sub">75+ TV चैनल इसी फोन पर — कोई ऐप नहीं, कोई चार्ज नहीं</div>
+            <div class="cta">अभी फ्री में देखें →</div>
+        </a>
+    </div>
+
 </div>
 </body>
 </html>
