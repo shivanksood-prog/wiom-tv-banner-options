@@ -1067,7 +1067,7 @@
     <!-- down to the matching "WIOM TV BANNER - END" marker. Nothing else.  -->
     <!-- ================================================================= -->
     <style type="text/css">
-        /* ----- Wiom TV banner: vertical hero (fills the screen seamlessly) ----- */
+        /* ----- Wiom TV banner: horizontal card (phone | message) ----- */
         .tv-banner-card {
             display: none;
             width: 90%;
@@ -1077,37 +1077,38 @@
             background: #fff;
             border: 1px solid #FFB2E4;
             border-radius: 20px;
-            padding: 22px 18px;
+            padding: 18px;
             text-decoration: none;
             opacity: 0;
             transform: translateY(14px);
             transition: opacity .7s ease, transform .7s ease;
         }
-        .tv-banner-card.show { display: flex; flex-direction: column; align-items: center; }
+        .tv-banner-card.show { display: block; }
         .tv-banner-card.visible { opacity: 1; transform: translateY(0); }
 
+        .tvb-head { display: flex; align-items: center; gap: 16px; }
         .tvb-phone {
-            flex: 0 0 auto; width: 132px; aspect-ratio: 9 / 19; box-sizing: border-box;
-            background: #0B0714; border: 3px solid #443152; border-radius: 22px;
-            padding: 18px 8px 16px 8px; position: relative;
+            flex: 0 0 112px; width: 112px; aspect-ratio: 9 / 19; box-sizing: border-box;
+            background: #0B0714; border: 3px solid #443152; border-radius: 20px;
+            padding: 15px 7px 13px 7px; position: relative;
             display: flex; flex-direction: column; justify-content: center;
         }
-        .tvb-phone::before { content: ''; position: absolute; top: 8px; left: 50%; transform: translateX(-50%); width: 6px; height: 6px; border-radius: 50%; background: #665E75; }
-        .tvb-phone::after  { content: ''; position: absolute; bottom: 7px; left: 50%; transform: translateX(-50%); width: 36px; height: 3px; border-radius: 9999px; background: #665E75; }
+        .tvb-phone::before { content: ''; position: absolute; top: 7px; left: 50%; transform: translateX(-50%); width: 6px; height: 6px; border-radius: 50%; background: #665E75; }
+        .tvb-phone::after  { content: ''; position: absolute; bottom: 6px; left: 50%; transform: translateX(-50%); width: 32px; height: 3px; border-radius: 9999px; background: #665E75; }
         .tvb-tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
-        .tvb-tile { border-radius: 8px; aspect-ratio: 1 / 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; color: #fff; font-size: 10px; font-weight: 600; }
-        .tvb-tile .em { font-size: 17px; line-height: 1; }
+        .tvb-tile { border-radius: 7px; aspect-ratio: 1 / 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; color: #fff; font-size: 10px; font-weight: 600; }
+        .tvb-tile .em { font-size: 16px; line-height: 1; }
         .tvb-g1 { background: #6D17CE; } .tvb-g2 { background: #D9008D; }
         .tvb-g3 { background: #FF8000; } .tvb-g4 { background: #008043; }
 
-        .tvb-text { display: flex; flex-direction: column; align-items: center; gap: 7px; text-align: center; width: 100%; }
+        .tvb-right { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 8px; align-items: center; text-align: center; }
         .tvb-new { display: inline-block; background: #443152; color: #fff; font-size: 11px; font-weight: 700; padding: 2px 11px; border-radius: 9999px; letter-spacing: .3px; }
         /* FREE leads the message (point 5) */
-        .tvb-free { color: #D9008D; font-size: 29px; font-weight: 800; line-height: 32px; }
-        .tvb-sub { color: #161021; font-size: 18px; font-weight: 700; line-height: 24px; }
+        .tvb-free { color: #D9008D; font-size: 25px; font-weight: 800; line-height: 28px; }
+        .tvb-sub { color: #161021; font-size: 17px; font-weight: 700; line-height: 23px; }
         .tvb-feature { display: flex; align-items: center; justify-content: center; gap: 7px; color: #443152; font-size: 13px; font-weight: 600; line-height: 18px; }
         .tvb-check { width: 17px; height: 17px; flex: 0 0 auto; fill: #008043; }
-        .tvb-cta { align-self: stretch; background: #D9008D; color: #fff; font-size: 16px; font-weight: 700; line-height: 24px; text-align: center; padding: 14px; border-radius: 13px; }
+        .tvb-cta { margin-top: 4px; align-self: stretch; background: #D9008D; color: #fff; font-size: 16px; font-weight: 700; line-height: 24px; text-align: center; padding: 13px 14px; border-radius: 13px; }
 
         /* ----- squeeze phase: tick + titles compress smoothly in place ----- */
         #success.tv-mode #container { padding: 4px 0; transition: padding .9s cubic-bezier(.4, 0, .2, 1); }
@@ -1115,20 +1116,18 @@
         #success.tv-mode #success-title { margin-top: 0 !important; transition: margin .9s cubic-bezier(.4, 0, .2, 1) !important; }
         #success.tv-mode #success-title h2 { font-size: 15px !important; line-height: 20px !important; margin: 2px 0 0 0 !important; transition: font-size .9s cubic-bezier(.4, 0, .2, 1), line-height .9s cubic-bezier(.4, 0, .2, 1), margin .9s cubic-bezier(.4, 0, .2, 1); }
 
-        /* ----- fill the portrait: success strip at top, TV hero fills below ----- */
+        /* ----- point 3 (seamless): success strip stays at top; the banner is
+                 vertically CENTERED in the space below it. Fills the screen,
+                 never exceeds it, no white pockets inside the card. ----- */
         #success.tv-mode {
             display: flex !important;
             flex-direction: column;
             min-height: 100vh;
             min-height: 100dvh;
             box-sizing: border-box;
-            padding-bottom: 78px;   /* reserve room for the fixed feedback strip (no reflow when it appears) */
+            padding-bottom: 78px;   /* reserve room for the fixed feedback strip */
         }
-        #success.tv-mode .tv-banner-card.show {
-            flex: 1 1 auto;
-            justify-content: space-evenly;
-            gap: 14px;
-        }
+        #success.tv-mode .tv-banner-card.show { margin-top: auto; margin-bottom: auto; }
 
         /* ----- feedback: small NON-MODAL strip, fixed at the bottom (never reflows the banner) ----- */
         #tv-feedback-strip {
@@ -1163,26 +1162,28 @@
         function $(id) { return document.getElementById(id); }
         function curLang() { return (window.currLang) || (window.localStorage && localStorage.getItem('currLanguage')) || 'hi'; }
 
-        /* 1) inject the vertical-hero banner inside #success, after #pay_ss (default = Hindi) */
+        /* 1) inject the horizontal banner inside #success, after #pay_ss (default = Hindi) */
         var successDiv = $('success');
         if (successDiv && !$('tv-banner')) {
             var bannerHtml =
                 '<a id="tv-banner" class="tv-banner-card" href="https://satyam.wiom.in/tv" target="_blank" rel="noopener">' +
-                  '<div class="tvb-phone"><div class="tvb-tiles">' +
-                    '<div class="tvb-tile tvb-g1"><span class="em">&#128240;</span><span class="lbl">न्यूज़</span></div>' +
-                    '<div class="tvb-tile tvb-g2"><span class="em">&#127916;</span><span class="lbl">मूवीज़</span></div>' +
-                    '<div class="tvb-tile tvb-g3"><span class="em">&#128591;</span><span class="lbl">भक्ति</span></div>' +
-                    '<div class="tvb-tile tvb-g4"><span class="em">&#129490;</span><span class="lbl">कार्टून</span></div>' +
-                    '<div class="tvb-tile tvb-g2"><span class="em">&#127925;</span><span class="lbl">म्यूज़िक</span></div>' +
-                    '<div class="tvb-tile tvb-g1"><span class="em">&#127951;</span><span class="lbl">स्पोर्ट्स</span></div>' +
-                  '</div></div>' +
-                  '<div class="tvb-text">' +
-                    '<span id="tv-banner-badge" class="tvb-new">नया</span>' +
-                    '<div id="tv-banner-free" class="tvb-free">&#127873; बिल्कुल फ्री</div>' +
-                    '<div id="tv-banner-sub" class="tvb-sub">75+ TV चैनल, इसी फोन पर</div>' +
-                    '<div class="tvb-feature"><svg class="tvb-check" viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg><span id="tv-banner-feature">एक क्लिक में, बिना कोई ऐप</span></div>' +
+                  '<div class="tvb-head">' +
+                    '<div class="tvb-phone"><div class="tvb-tiles">' +
+                      '<div class="tvb-tile tvb-g1"><span class="em">&#128240;</span><span class="lbl">न्यूज़</span></div>' +
+                      '<div class="tvb-tile tvb-g2"><span class="em">&#127916;</span><span class="lbl">मूवीज़</span></div>' +
+                      '<div class="tvb-tile tvb-g3"><span class="em">&#128591;</span><span class="lbl">भक्ति</span></div>' +
+                      '<div class="tvb-tile tvb-g4"><span class="em">&#129490;</span><span class="lbl">कार्टून</span></div>' +
+                      '<div class="tvb-tile tvb-g2"><span class="em">&#127925;</span><span class="lbl">म्यूज़िक</span></div>' +
+                      '<div class="tvb-tile tvb-g1"><span class="em">&#127951;</span><span class="lbl">स्पोर्ट्स</span></div>' +
+                    '</div></div>' +
+                    '<div class="tvb-right">' +
+                      '<span id="tv-banner-badge" class="tvb-new">नया</span>' +
+                      '<div id="tv-banner-free" class="tvb-free">&#127873; बिल्कुल फ्री</div>' +
+                      '<div id="tv-banner-sub" class="tvb-sub">75+ TV चैनल, इसी फोन पर</div>' +
+                      '<div class="tvb-feature"><svg class="tvb-check" viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg><span id="tv-banner-feature">एक क्लिक में, बिना कोई ऐप</span></div>' +
+                      '<div id="tv-banner-cta" class="tvb-cta">अभी देखें →</div>' +
+                    '</div>' +
                   '</div>' +
-                  '<div id="tv-banner-cta" class="tvb-cta">अभी देखें →</div>' +
                 '</a>';
             var payss = $('pay_ss');
             if (payss) { payss.insertAdjacentHTML('afterend', bannerHtml); }
@@ -1206,7 +1207,7 @@
                   '<button id="tvfb-give" class="tvfb-give" type="button">राय दें →</button>' +
                 '</div>';
             successDiv.insertAdjacentHTML('beforeend', stripHtml);
-            var giveBtn = $('tvfb-give'), strip = $('tv-feedback-strip');
+            var giveBtn = $('tvfb-give');
             if (giveBtn) giveBtn.addEventListener('click', function () {
                 try { handleSurveyFeedback(); }
                 catch (e) { try { if (window.surveyConfig && surveyConfig.message) window.open(surveyConfig.message, '_blank'); } catch (e2) {} }
@@ -1244,7 +1245,7 @@
             window.toggleLanguage = function () { var r = _origToggleLanguage.apply(this, arguments); updateTvBannerLang(); updateFeedbackStripLang(); return r; };
         }
 
-        /* sequencing flags: the feedback strip must appear AFTER the TV banner */
+        /* the feedback strip must appear AFTER the TV banner is revealed */
         var _surveyRequested = false, _bannerRevealed = false, _stripShown = false;
         function showFeedbackStrip() {
             var strip = $('tv-feedback-strip'); if (!strip) return;
@@ -1261,7 +1262,7 @@
             showFeedbackStrip();
         }
 
-        /* 3) the success -> TV transition (smooth compress, then hero fades in) */
+        /* 3) the success -> TV transition (smooth compress, then banner fades in) */
         function enterTvMode() {
             var success = $('success'), payss = $('pay_ss'), banner = $('tv-banner');
             if (!success || !banner) return;
