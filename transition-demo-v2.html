@@ -1132,8 +1132,10 @@
             box-sizing: border-box;
             padding-bottom: 96px;   /* reserve room for the fixed feedback strip */
         }
-        /* success strip compresses IN PLACE at the top (no reposition -> no tick jump);
-           only the banner is centered in the space below it. */
+        /* success strip floats centered between the header and the banner; the banner
+           sits centered in the space below it. (Banner space is reserved from the start
+           of the transition so these positions settle smoothly with no re-jump.) */
+        #success.tv-mode #container { margin-top: auto; margin-bottom: auto; }
         #success.tv-mode .tv-banner-card.show { margin-top: auto; margin-bottom: auto; }
 
         /* ----- feedback: small NON-MODAL strip, fixed at the bottom (never reflows the banner) ----- */
@@ -1274,6 +1276,7 @@
             var success = $('success'), payss = $('pay_ss'), banner = $('tv-banner');
             if (!success || !banner) return;
             success.classList.add('tv-mode');
+            banner.classList.add('show');   // reserve the banner's layout slot now (still invisible) so centering is stable
             if (payss) {
                 payss.style.height = payss.scrollHeight + 'px';
                 payss.style.overflow = 'hidden';
@@ -1284,7 +1287,6 @@
             }
             setTimeout(function () {
                 if (payss) payss.style.display = 'none';
-                banner.classList.add('show');
                 requestAnimationFrame(function () {
                     requestAnimationFrame(function () {
                         banner.classList.add('visible');
