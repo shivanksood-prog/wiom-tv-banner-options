@@ -1106,7 +1106,7 @@
         .tvb-logo { width: 40px; height: 40px; flex: 0 0 auto; }
         .tvb-brandname { font-size: 24px; font-weight: 800; line-height: 1; letter-spacing: .3px; }
         .tvb-brandname .w { color: #D9008D; }
-        .tvb-brandname .t { color: #443152; }
+        .tvb-brandname .t { color: #D9008D; }
         .tvb-new { display: inline-block; background: #443152; color: #fff; font-size: 10px; font-weight: 700; padding: 2px 9px; border-radius: 9999px; letter-spacing: .3px; }
         /* FREE leads the message (point 5) */
         .tvb-free { color: #D9008D; font-size: 25px; font-weight: 800; line-height: 28px; }
@@ -1130,10 +1130,11 @@
             min-height: 100vh;
             min-height: 100dvh;
             box-sizing: border-box;
-            padding-bottom: 78px;   /* reserve room for the fixed feedback strip */
+            padding-bottom: 96px;   /* reserve room for the fixed feedback strip */
         }
-        #success.tv-mode #container { margin-top: auto !important; }
-        #success.tv-mode .tv-banner-card.show { margin-top: 22px; margin-bottom: auto; }
+        /* success strip compresses IN PLACE at the top (no reposition -> no tick jump);
+           only the banner is centered in the space below it. */
+        #success.tv-mode .tv-banner-card.show { margin-top: auto; margin-bottom: auto; }
 
         /* ----- feedback: small NON-MODAL strip, fixed at the bottom (never reflows the banner) ----- */
         #tv-feedback-strip {
@@ -1184,7 +1185,7 @@
                       '<div class="tvb-tile tvb-g1"><span class="em">&#127951;</span><span class="lbl">स्पोर्ट्स</span></div>' +
                     '</div></div>' +
                     '<div class="tvb-right">' +
-                      '<div id="tv-banner-free" class="tvb-free">&#127873; बिल्कुल फ्री</div>' +
+                      '<div id="tv-banner-free" class="tvb-free">&#127873; बिल्कुल फ्री!</div>' +
                       '<div id="tv-banner-sub" class="tvb-sub">250+ TV चैनल, इसी फोन पर</div>' +
                       '<div class="tvb-feature"><svg class="tvb-check" viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg><span id="tv-banner-feature">एक क्लिक में, बिना कोई ऐप</span></div>' +
                       '<div id="tv-banner-cta" class="tvb-cta">अभी देखें →</div>' +
@@ -1208,7 +1209,7 @@
                 '<div id="tv-feedback-strip">' +
                   '<div class="tvfb-left">' +
                     '<span class="tvfb-icon">&#128172;</span>' +
-                    '<span id="tvfb-q" class="tvfb-q">व्योम को और बेहतर बनाएं ❤️</span>' +
+                    '<span id="tvfb-q" class="tvfb-q">व्योम अनुभव को और बेहतर बनाने में हमारी मदद करें ❤️</span>' +
                   '</div>' +
                   '<button id="tvfb-give" class="tvfb-give" type="button">राय दें →</button>' +
                 '</div>';
@@ -1227,14 +1228,14 @@
             var tiles = document.querySelectorAll('#tv-banner .tvb-tile .lbl');
             if (curLang() === 'en') {
                 badge.innerText = 'NEW';
-                free.innerHTML = '&#127873; Completely FREE';
+                free.innerHTML = '&#127873; Completely FREE!';
                 sub.innerText = '250+ TV channels, on this phone';
                 feature.innerText = 'In one click, no app';
                 cta.innerText = 'Watch Now →';
                 ['News','Movies','Bhakti','Kids','Music','Sports'].forEach(function (t, i) { if (tiles[i]) tiles[i].innerText = t; });
             } else {
                 badge.innerText = 'नया';
-                free.innerHTML = '&#127873; बिल्कुल फ्री';
+                free.innerHTML = '&#127873; बिल्कुल फ्री!';
                 sub.innerText = '250+ TV चैनल, इसी फोन पर';
                 feature.innerText = 'एक क्लिक में, बिना कोई ऐप';
                 cta.innerText = 'अभी देखें →';
@@ -1243,8 +1244,8 @@
         }
         function updateFeedbackStripLang() {
             var q = $('tvfb-q'), give = $('tvfb-give'); if (!q) return;
-            if (curLang() === 'en') { q.innerHTML = 'Help make Wiom better ❤️'; if (give) give.innerText = 'Give Feedback →'; }
-            else { q.innerHTML = 'व्योम को और बेहतर बनाएं ❤️'; if (give) give.innerText = 'राय दें →'; }
+            if (curLang() === 'en') { q.innerHTML = 'Help us make your Wiom experience even better ❤️'; if (give) give.innerText = 'Give Feedback →'; }
+            else { q.innerHTML = 'व्योम अनुभव को और बेहतर बनाने में हमारी मदद करें ❤️'; if (give) give.innerText = 'राय दें →'; }
         }
         if (typeof window.toggleLanguage === 'function') {
             var _origToggleLanguage = window.toggleLanguage;
