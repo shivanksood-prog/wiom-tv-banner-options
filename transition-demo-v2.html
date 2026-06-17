@@ -1188,7 +1188,7 @@
                     '</div></div>' +
                     '<div class="tvb-right">' +
                       '<div id="tv-banner-free" class="tvb-free">&#127873; बिल्कुल फ्री!</div>' +
-                      '<div id="tv-banner-sub" class="tvb-sub">250+ TV चैनल, इसी फोन पर</div>' +
+                      '<div id="tv-banner-sub" class="tvb-sub">250+ TV चैनल<br>इसी फोन पर</div>' +
                       '<div class="tvb-feature"><svg class="tvb-check" viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg><span id="tv-banner-feature">एक क्लिक में, बिना कोई ऐप</span></div>' +
                       '<div id="tv-banner-cta" class="tvb-cta">अभी देखें →</div>' +
                     '</div>' +
@@ -1231,14 +1231,14 @@
             if (curLang() === 'en') {
                 badge.innerText = 'NEW';
                 free.innerHTML = '&#127873; Completely FREE!';
-                sub.innerText = '250+ TV channels, on this phone';
+                sub.innerHTML = '250+ TV channels<br>on this phone';
                 feature.innerText = 'In one click, no app';
                 cta.innerText = 'Watch Now →';
                 ['News','Movies','Bhakti','Kids','Music','Sports'].forEach(function (t, i) { if (tiles[i]) tiles[i].innerText = t; });
             } else {
                 badge.innerText = 'नया';
                 free.innerHTML = '&#127873; बिल्कुल फ्री!';
-                sub.innerText = '250+ TV चैनल, इसी फोन पर';
+                sub.innerHTML = '250+ TV चैनल<br>इसी फोन पर';
                 feature.innerText = 'एक क्लिक में, बिना कोई ऐप';
                 cta.innerText = 'अभी देखें →';
                 ['न्यूज़','मूवीज़','भक्ति','कार्टून','म्यूज़िक','स्पोर्ट्स'].forEach(function (t, i) { if (tiles[i]) tiles[i].innerText = t; });
@@ -1346,7 +1346,6 @@
         };
     })();
     </script>
-    <!-- preview-only replay control, moved to top-center so it covers nothing -->
     <div style="position:fixed;top:8px;left:50%;transform:translateX(-50%);z-index:99999;">
         <button onclick="location.reload()" style="background:#161021;color:#fff;border:none;border-radius:9999px;padding:6px 13px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Noto Sans';opacity:.9;">&#8635; Replay</button>
     </div>
